@@ -1,0 +1,6 @@
+{
+  "name": "Diame Diallo Immobilier",
+  "description": "Site officiel de l'Agence Immobilière Diame Diallo SUARL à Dakar, Sénégal - Achat, vente, location et gestion immobilière d'excellence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
