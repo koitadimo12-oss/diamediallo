@@ -12,6 +12,7 @@ export const Logo: React.FC<LogoProps> = ({
   size = 'md',
 }) => {
   const isWhite = variant === 'white';
+  const [imgError, setImgError] = React.useState(false);
   const textColor = isWhite ? 'text-white' : 'text-[#00152a]';
   const subtitleColor = isWhite ? 'text-amber-400' : 'text-[#c89218]';
   const suarlColor = isWhite ? 'text-amber-300' : 'text-[#c89218]';
@@ -23,6 +24,38 @@ export const Logo: React.FC<LogoProps> = ({
     lg: { icon: 'w-14 h-14', text: 'text-2xl', sub: 'text-xs', suarl: 'text-[11px]' },
     xl: { icon: 'w-20 h-20', text: 'text-3xl', sub: 'text-sm', suarl: 'text-xs' },
   }[size];
+
+  const heightClass = {
+    sm: 'h-8 sm:h-9',
+    md: 'h-10 sm:h-12',
+    lg: 'h-14 sm:h-16',
+    xl: 'h-20 sm:h-24',
+  }[size];
+
+  if (!imgError) {
+    if (isWhite) {
+      return (
+        <div className={`inline-flex items-center bg-white px-3 py-1.5 rounded-xl shadow-sm border border-amber-400/20 ${className}`}>
+          <img
+            src="/logodiame.jpeg"
+            alt="Agence Immobilière Diame Diallo SUARL"
+            className={`${heightClass} w-auto object-contain`}
+            onError={() => setImgError(true)}
+          />
+        </div>
+      );
+    }
+    return (
+      <div className={`inline-flex items-center ${className}`}>
+        <img
+          src="/logodiame.jpeg"
+          alt="Agence Immobilière Diame Diallo SUARL"
+          className={`${heightClass} w-auto object-contain`}
+          onError={() => setImgError(true)}
+        />
+      </div>
+    );
+  }
 
   // The custom vector mark matching Image 3 precisely
   const LogoEmblem = ({ className: emblemClass = 'w-12 h-12' }: { className?: string }) => (

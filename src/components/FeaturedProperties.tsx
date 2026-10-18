@@ -31,7 +31,7 @@ export const FeaturedProperties: React.FC<FeaturedPropertiesProps> = ({
   selectedFilterTransaction = 'all',
   selectedFilterZone,
 }) => {
-  const [activeTab, setActiveTab] = useState<'all' | 'maison' | 'appartement' | 'terrain'>(
+  const [activeTab, setActiveTab] = useState<PropertyType | 'all'>(
     selectedFilterType || 'all'
   );
   const [activeTransaction, setActiveTransaction] = useState<TransactionType | 'all'>(
