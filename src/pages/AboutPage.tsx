@@ -13,10 +13,10 @@ const DIAME_PHOTO_FALLBACK =
   'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80';
 
 const PILLARS = [
-  { icon: Award, title: 'Expertise locale (+10 ans)', text: 'Une parfaite connaissance du marché sénégalais, de Dakar à la Petite-Côte.' },
+  { icon: Award, title: 'Expertise locale (+20 ans)', text: 'Une parfaite connaissance du marché sénégalais, de Dakar à la Petite-Côte.' },
   { icon: ShieldCheck, title: 'Sécurité juridique 100%', text: 'Vérification systématique des titres fonciers et des baux pour chaque transaction.' },
   { icon: Users, title: 'Accompagnement diaspora', text: "Suivi vidéo, gestion à distance et reporting mensuel pour les Sénégalais de l'extérieur." },
-  { icon: MapPin, title: 'Présence terrain à Dakar', text: 'Ancrés à Dakar depuis plus d’une décennie et actifs sur tout le territoire.' },
+  { icon: MapPin, title: 'Présence terrain à Dakar', text: 'Ancrés à Dakar depuis plus de deux décennies et actifs sur tout le territoire.' },
 ];
 
 const VALUES = [
@@ -25,13 +25,13 @@ const VALUES = [
   'Rigueur juridique et notariale',
   'Réactivité et disponibilité',
   'Respect de vos intérêts à chaque étape',
-  'Relation de confiance durable depuis +10 ans',
+  'Relation de confiance durable depuis plus de 20 ans',
 ];
 
 export const AboutPage: React.FC = () => {
   usePageMeta({
-    title: `À Propos — ${AGENCY_CONFIG.name} · Plus de 10 ans d'histoire`,
-    description: `Découvrez l'${AGENCY_CONFIG.name}, fondée par ${AGENCY_CONFIG.director.name}. Une référence immobilière sénégalaise présente à Dakar depuis plus de 10 ans.`,
+    title: `À Propos — ${AGENCY_CONFIG.name} · Plus de 20 ans d'histoire`,
+    description: `Découvrez l'${AGENCY_CONFIG.name}, fondée par ${AGENCY_CONFIG.director.name}. Une référence immobilière sénégalaise présente à Dakar depuis plus de 20 ans.`,
     canonical: `${AGENCY_CONFIG.siteUrl}/a-propos`,
     ogImage: '/logodiame.jpeg',
   });
@@ -45,12 +45,12 @@ export const AboutPage: React.FC = () => {
       <div className="relative py-20 md:py-28 bg-[#10243A] overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle, #C8A96B 1px, transparent 1px)`, backgroundSize: '28px 28px' }} />
         <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-amber-400 mb-4">Notre histoire · Plus de 10 ans</span>
+          <span className="inline-block text-xs font-bold uppercase tracking-widest text-amber-400 mb-4">Notre histoire · Plus de 20 ans d'expérience</span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight" style={{ fontFamily: 'Georgia, serif' }}>
             À Propos de l'Agence Immobilière Diame Diallo
           </h1>
           <p className="mt-4 text-white/70 text-sm sm:text-base max-w-xl mx-auto">
-            Une référence immobilière à Dakar fondée sur des valeurs d'écoute, d'intégrité et de transparence, au service de vos projets patrimoniaux depuis plus de 10 ans.
+            Une référence immobilière à Dakar fondée sur des valeurs d'écoute, d'intégrité et de transparence, au service de vos projets patrimoniaux depuis plus de 20 ans.
           </p>
         </div>
       </div>
@@ -84,7 +84,7 @@ export const AboutPage: React.FC = () => {
           <div>
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-amber-500 mb-4">Le mot du Fondateur</span>
             <h2 className="text-3xl sm:text-4xl font-black text-[#10243A] mb-6 leading-tight" style={{ fontFamily: 'Georgia, serif' }}>
-              Plus de 10 ans de confiance et d'exigence à votre service à Dakar
+              Plus de 20 ans de confiance et d'exigence à votre service à Dakar
             </h2>
             <Quote className="w-10 h-10 text-amber-500/30 mb-4" />
             <div className="space-y-3.5 mb-8">

@@ -15,6 +15,11 @@ export const VideosPage: React.FC = () => {
 
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
 
+  // Exclure uniquement la vidéo de visites de chantiers demandée.
+  const displayedVideos = VIDEOS_DATA.filter(
+    (vid) => vid.title !== 'Visites de chantiers et immersion terrain à Colobane et Dakar'
+  );
+
   return (
     <Layout>
       {/* Hero Header */}
@@ -72,8 +77,9 @@ export const VideosPage: React.FC = () => {
         </div>
 
         {/* Video Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {VIDEOS_DATA.map((vid) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 mb-16 max-w-5xl mx-auto">
+
+          {displayedVideos.map((vid) => {
             const ytWatchUrl = vid.youtubeUrl || `https://www.youtube.com/watch?v=${vid.youtubeId}`;
             const thumbUrl = vid.youtubeId
               ? `https://img.youtube.com/vi/${vid.youtubeId}/hqdefault.jpg`

@@ -26,6 +26,7 @@ const footerLinks = {
   legal: [
     { label: 'Mentions légales', path: '/mentions-legales' },
     { label: 'Politique de confidentialité', path: '/confidentialite' },
+    { label: "Conditions d'utilisation & Barème", path: '/conditions' },
   ],
 };
 
@@ -75,7 +76,7 @@ export const Footer: React.FC = () => {
 
           {/* Column 1: Brand */}
           <div className="lg:col-span-1">
-            <Logo variant="full" dark />
+            <Logo variant="full" dark size="lg" />
             <p className="mt-5 text-sm text-white/60 leading-relaxed max-w-xs">
               {AGENCY_CONFIG.tagline}
             </p>

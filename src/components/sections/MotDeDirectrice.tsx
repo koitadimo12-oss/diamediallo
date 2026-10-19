@@ -12,7 +12,7 @@ const DIAME_PHOTO_FALLBACK =
   'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80';
 
 const KEY_STRENGTHS = [
-  'Plus de 10 ans de présence continue et de confiance sur Dakar',
+  'Plus de 20 ans de présence continue et d’expérience foncière à Dakar',
   'Sécurisation juridique stricte (Titres Fonciers, Baux et Notaires)',
   'Partenaire privilégié de la diaspora pour investir au Sénégal',
   'Accompagnement transparent et personnalisé du premier contact à la remise des clés',
@@ -106,10 +106,10 @@ export const MotDeDirectrice: React.FC = () => {
                 {/* Gradient overlay for readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a1726] via-[#0a1726]/40 to-transparent" />
 
-                {/* Top Badge: 10+ ans à Dakar */}
+                {/* Top Badge: 20+ ans à Dakar */}
                 <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-amber-400/40 text-amber-300 text-xs font-bold tracking-wide">
                   <Award className="w-3.5 h-3.5 text-amber-400" />
-                  Présent à Dakar depuis +10 ans
+                  Présent à Dakar depuis plus de 20 ans
                 </div>
 
                 {/* Bottom Card Identity */}

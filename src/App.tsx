@@ -11,6 +11,7 @@ import { ConseilDetailPage } from './pages/ConseilDetailPage';
 import { VideosPage } from './pages/VideosPage';
 import { MentionsLegalesPage } from './pages/MentionsLegalesPage';
 import { ConfidentialitePage } from './pages/ConfidentialitePage';
+import { ConditionsGeneralesPage } from './pages/ConditionsGeneralesPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 /**
@@ -43,6 +44,7 @@ export default function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
         <Route path="/confidentialite" element={<ConfidentialitePage />} />
+        <Route path="/conditions" element={<ConditionsGeneralesPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>

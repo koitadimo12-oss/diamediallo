@@ -65,15 +65,17 @@ export const Navbar: React.FC = () => {
         role="banner"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'bg-white/97 backdrop-blur-xl shadow-lg shadow-[#10243A]/8 border-b border-[#C8A96B]/20'
-            : 'bg-white/90 backdrop-blur-md border-b border-transparent'
+            ? 'bg-white/98 backdrop-blur-xl shadow-lg shadow-[#10243A]/10 border-b border-[#C8A96B]/25 py-1.5'
+            : 'bg-white/95 backdrop-blur-md border-b border-black/5 py-3 sm:py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-18 py-3">
-            {/* Logo */}
-            <Link to="/" aria-label="Accueil – Agence Immobilière Diame Diallo" className="flex-shrink-0">
-              <Logo variant="compact" />
+          <div className={`flex items-center justify-between transition-all duration-300 ${
+            isScrolled ? 'h-16 sm:h-18' : 'h-20 sm:h-24'
+          }`}>
+            {/* Logo agrandi */}
+            <Link to="/" aria-label="Accueil : Agence Immobilière D.DIALLO" className="flex-shrink-0 flex items-center">
+              <Logo size={isScrolled ? 'sm' : 'md'} />
             </Link>
 
             {/* Desktop Nav */}

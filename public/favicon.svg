@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F2438"/>
+      <stop offset="100%" stop-color="#081420"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F2D696"/>
+      <stop offset="50%" stop-color="#C8A96B"/>
+      <stop offset="100%" stop-color="#9C7A3C"/>
+    </linearGradient>
+    <filter id="goldGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#C8A96B" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base with Rounded Corners -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)"/>
+
+  <!-- Elegant Fine Gold Double Border -->
+  <rect x="24" y="24" width="464" height="464" rx="88" fill="none" stroke="url(#goldGrad)" stroke-width="6" opacity="0.6"/>
+  <rect x="36" y="36" width="440" height="440" rx="76" fill="none" stroke="url(#goldGrad)" stroke-width="2" opacity="0.4"/>
+
+  <!-- Architectural Roof Crest / Keystone Accent -->
+  <path d="M 216 118 L 256 82 L 296 118 Z" fill="url(#goldGrad)"/>
+  <rect x="252" y="118" width="8" height="20" fill="url(#goldGrad)"/>
+
+  <!-- Luxury Monogram "DD" -->
+  <g filter="url(#goldGlow)" fill="url(#goldGrad)">
+    <!-- First 'D' -->
+    <path d="M 128 160 H 224 C 280 160 316 198 316 256 C 316 314 280 352 224 352 H 128 Z M 168 196 V 316 H 220 C 254 316 274 292 274 256 C 274 220 254 196 220 196 Z"/>
+    
+    <!-- Second 'D' Interlocked/Offset with Architectural Depth -->
+    <path d="M 248 184 H 324 C 372 184 404 216 404 266 C 404 316 372 348 324 348 H 248 V 324 H 320 C 352 324 374 302 374 266 C 374 230 352 208 320 208 H 248 Z" opacity="0.9"/>
+  </g>
+
+  <!-- Subtitle Typography "D.DIALLO" -->
+  <text x="256" y="420" 
+        text-anchor="middle" 
+        fill="url(#goldGrad)" 
+        font-family="'Playfair Display', Georgia, serif" 
+        font-size="44" 
+        font-weight="800" 
+        letter-spacing="12">
+    D.DIALLO
+  </text>
+  
+  <text x="256" y="454" 
+        text-anchor="middle" 
+        fill="#FFFFFF" 
+        opacity="0.65" 
+        font-family="'Work Sans', -apple-system, sans-serif" 
+        font-size="18" 
+        font-weight="700" 
+        letter-spacing="8">
+    IMMOBILIER
+  </text>
+</svg>
