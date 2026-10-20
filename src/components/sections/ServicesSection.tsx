@@ -19,7 +19,7 @@ const ICONS: Record<string, React.ElementType> = {
 
 const SERVICE_IMAGES: Record<string, string> = {
   terrains: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80',
-  'gestion-locative': 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80',
+  'gestion-locative': '/team.jpg',
   intermediation: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
   'assistance-fonciere': '/imageservicefonciere.jpg',
 };

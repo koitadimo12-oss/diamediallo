@@ -60,7 +60,7 @@ export const VideosPage: React.FC = () => {
         </div>
 
         {/* Video Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {VIDEOS_DATA.map((vid) => {
             const ytWatchUrl = vid.youtubeUrl || `https://www.youtube.com/watch?v=${vid.youtubeId}`;
             const thumbUrl = vid.youtubeId

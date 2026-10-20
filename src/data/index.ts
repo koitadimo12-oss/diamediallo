@@ -492,17 +492,7 @@ export const VIDEOS_DATA: VideoItem[] = [
     youtubeUrl: 'https://www.youtube.com/watch?v=C43qUc8Zqvw',
     isPendingValidation: false,
   },
-  {
-    id: 'vid-003',
-    title: 'Visites de chantiers et immersion terrain à Colobane et Dakar',
-    description:
-      'Intervention de terrain par l’Agence Diamé Diallo : suivi de chantiers, conformité des accès, bornage et gestion des parcelles pour les propriétaires et la diaspora.',
-    category: 'Visite de Chantier',
-    duration: '11:15',
-    youtubeId: 'tHfHp_IrrMc',
-    youtubeUrl: 'https://www.youtube.com/watch?v=tHfHp_IrrMc',
-    isPendingValidation: false,
-  },
+  
 ];
 
 export const FAQ_DATA: FaqItem[] = [
