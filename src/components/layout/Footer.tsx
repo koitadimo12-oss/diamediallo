@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Phone, Mail, MapPin, MessageSquare, Facebook, Instagram, Linkedin,
-  Home, TrendingUp, Key, Settings, ChevronRight
+  Phone, Mail, MapPin, Facebook, Instagram, Linkedin, ChevronRight
 } from 'lucide-react';
 import { Logo } from '../ui/Logo';
 import { AGENCY_CONFIG } from '../../data';
@@ -22,6 +21,7 @@ const footerLinks = {
     { label: 'Vidéos & Pédagogie', path: '/videos' },
     { label: 'À Propos', path: '/a-propos' },
     { label: 'Contact', path: '/contact' },
+    { label: 'FAQ', path: '/#faq' },
   ],
   legal: [
     { label: 'Mentions légales', path: '/mentions-legales' },
@@ -39,7 +39,7 @@ export const Footer: React.FC = () => {
       <div className="border-b border-white/10 bg-[#C8A96B]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <h2 className="text-2xl font-bold text-white" style={{ fontFamily: 'Georgia, serif' }}>
+            <h2 className="text-2xl font-bold text-white">
               Votre projet immobilier commence ici
             </h2>
             <p className="text-[#C8A96B] mt-1 text-sm">

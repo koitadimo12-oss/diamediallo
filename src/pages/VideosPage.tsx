@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Video, Youtube, Clock, ExternalLink, ArrowLeft, Play, X, ShieldCheck } from 'lucide-react';
 import { Layout } from '../components/layout/Layout';
+import { PageHeader } from '../components/ui/PageHeader';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { VIDEOS_DATA, AGENCY_CONFIG } from '../data';
 
@@ -10,32 +11,19 @@ export const VideosPage: React.FC = () => {
     title: `Interviews & Vidéos Officielles | ${AGENCY_CONFIG.name}`,
     description: `Découvrez les interviews et décryptages fonciers de M. Diamé Diallo sur YouTube (Manael TV). Formalités de titres fonciers, baux et chantiers à Dakar et Colobane.`,
     canonical: `${AGENCY_CONFIG.siteUrl}/videos`,
-    ogImage: '/logodiame.jpeg',
+    ogImage: '/logodiame.png',
   });
 
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
 
   return (
     <Layout>
-      {/* Hero Header */}
-      <div className="relative py-20 md:py-28 bg-[#10243A] overflow-hidden text-white">
-        <div
-          className="absolute inset-0 opacity-10 pointer-events-none"
-          style={{ backgroundImage: `radial-gradient(circle, #C8A96B 1px, transparent 1px)`, backgroundSize: '28px 28px' }}
-        />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-600/20 text-red-300 text-xs font-bold uppercase tracking-wider mb-4 border border-red-500/30">
-            <Youtube className="w-4 h-4 text-red-400" />
-            Interviews & Médias Officiels
-          </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-4" style={{ fontFamily: 'Georgia, serif' }}>
-            Interviews de M. Diamé Diallo sur YouTube
-          </h1>
-          <p className="text-white/75 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            Retrouvez les interventions, visites de chantiers et conseils pratiques donnés par M. Diamé Diallo, Directeur Général de l'agence, notamment diffusés sur la chaîne Manael TV.
-          </p>
-        </div>
-      </div>
+      <PageHeader
+        kicker="Interviews & médias"
+        title="Interviews de M. Diamé Diallo sur YouTube"
+        subtitle="Retrouvez les interventions, visites de chantiers et conseils pratiques, notamment diffusés sur Manael TV."
+        crumbs={[{ label: 'Accueil', path: '/' }, { label: 'Vidéos' }]}
+      />
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">

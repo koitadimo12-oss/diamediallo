@@ -71,13 +71,13 @@ export const ServicesSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="services-heading text-center mb-14">
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#C8A96B] mb-3">
+          <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#8a6a2a] mb-3">
             Ce que nous faisons
           </span>
           <h2
             id="services-heading"
             className="text-3xl sm:text-4xl md:text-5xl font-black text-[#10243A] leading-tight"
-            style={{ fontFamily: 'Georgia, serif' }}
+           
           >
             Nos Services Immobiliers
           </h2>
@@ -131,7 +131,7 @@ export const ServicesSection: React.FC = () => {
 
                     {/* Prestations bullet list */}
                     <div className="space-y-1.5 mb-5 pt-3 border-t border-slate-100">
-                      <p className="text-[11px] font-bold uppercase tracking-wider text-[#C8A96B] mb-2">
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-[#8a6a2a] mb-2">
                         Prestations clés :
                       </p>
                       {service.benefits.slice(0, 3).map((item, i) => (

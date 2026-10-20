@@ -23,7 +23,7 @@ export const TestimonialsSection: React.FC = () => {
         <h2
           id="temoignages-heading"
           className="text-2xl sm:text-3xl md:text-4xl font-black text-[#10243A] tracking-tight leading-tight mb-4"
-          style={{ fontFamily: 'Georgia, serif' }}
+         
         >
           La relation de confiance avec nos clients
         </h2>

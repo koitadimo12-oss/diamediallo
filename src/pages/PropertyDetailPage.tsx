@@ -212,7 +212,7 @@ export const PropertyDetailPage: React.FC = () => {
                 </span>
               </div>
 
-              <h1 className="text-xl font-black text-[#10243A] mt-3 mb-1 leading-snug" style={{ fontFamily: 'Georgia, serif' }}>
+              <h1 className="text-xl font-black text-[#10243A] mt-3 mb-1 leading-snug">
                 {property.title}
               </h1>
 

@@ -7,69 +7,49 @@ interface LogoProps {
 }
 
 /**
- * Logo officiel de l'Agence Immobilière Diame Diallo SUARL.
- * Utilise l'image uploadée logodiame.jpeg avec fallback stylisé.
+ * Logo officiel — PNG transparent (fond papier retiré).
  */
 export const Logo: React.FC<LogoProps> = ({
-  variant = 'compact',
   dark = false,
   className = '',
 }) => {
   const [imgError, setImgError] = useState(false);
 
-  if (!imgError) {
-    if (dark) {
-      return (
-        <div className={`inline-flex items-center gap-3 bg-white px-3 py-1.5 rounded-xl shadow-md border border-amber-400/30 ${className}`}>
-          <img
-            src="/logodiame.jpeg"
-            alt="Agence Immobilière Diame Diallo SUARL"
-            className="h-10 sm:h-12 w-auto object-contain"
-            onError={() => setImgError(true)}
-          />
-        </div>
-      );
-    }
+  const heightClass = dark
+    ? 'h-14 sm:h-16'
+    : 'h-11 sm:h-[3.15rem]';
 
+  if (!imgError) {
     return (
       <div className={`inline-flex items-center ${className}`}>
         <img
-          src="/logodiame.jpeg"
+          src="/logodiame.png?v=2"
           alt="Agence Immobilière Diame Diallo SUARL"
-          className="h-11 sm:h-13 w-auto object-contain drop-shadow-sm hover:scale-[1.02] transition-transform duration-200"
+          className={`${heightClass} w-auto max-w-[220px] sm:max-w-[260px] object-contain object-left`}
           onError={() => setImgError(true)}
         />
       </div>
     );
   }
 
-  // Fallback élégant si l'image ne charge pas
   const textColor = dark ? 'text-white' : 'text-[#10243A]';
-  const goldColor = 'text-[#d97706]';
 
   return (
     <div className={`flex items-center gap-2.5 select-none ${className}`} aria-label="Agence Immobilière Diame Diallo">
-      <div className="relative flex-shrink-0">
-        <div
-          className="w-10 h-10 rounded-lg flex items-center justify-center shadow-sm"
-          style={{ background: 'linear-gradient(135deg, #10243A 60%, #d97706 100%)' }}
-        >
-          <span className="text-white font-black text-lg leading-none" style={{ fontFamily: 'Georgia, serif' }}>
-            DD
-          </span>
-        </div>
-        <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-[#d97706] rounded-sm" />
+      <div
+        className="w-11 h-11 rounded-md flex items-center justify-center"
+        style={{ background: '#10243A' }}
+      >
+        <span className="text-[#C8A96B] font-extrabold text-lg leading-none tracking-tight">DD</span>
       </div>
-
       <div className="flex flex-col leading-none">
-        <span className={`font-black text-sm tracking-widest uppercase ${textColor}`} style={{ fontFamily: 'Georgia, serif', letterSpacing: '0.12em' }}>
+        <span className={`font-extrabold text-[15px] tracking-wide uppercase ${textColor}`}>
           Diame Diallo
         </span>
-        <span className={`text-[10px] uppercase tracking-[0.2em] font-semibold mt-0.5 ${goldColor}`}>
-          Agence Immobilière SUARL
+        <span className="text-[10px] uppercase tracking-[0.16em] font-medium mt-1 text-[#b08a3c]">
+          Agence Immobilière
         </span>
       </div>
     </div>
   );
 };
-

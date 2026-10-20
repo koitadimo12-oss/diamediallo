@@ -45,13 +45,13 @@ export const ContactSection: React.FC = () => {
 
           {/* Left: Info */}
           <div className="contact-col">
-            <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#C8A96B] mb-4">
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#8a6a2a] mb-4">
               Prendre contact
             </span>
             <h2
               id="contact-home-heading"
               className="text-3xl sm:text-4xl md:text-5xl font-black text-[#10243A] leading-tight mb-6"
-              style={{ fontFamily: 'Georgia, serif' }}
+             
             >
               Parlons de votre projet
             </h2>
@@ -148,7 +148,7 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <h3
                   className="text-2xl sm:text-3xl font-black text-white mb-4 leading-tight"
-                  style={{ fontFamily: 'Georgia, serif' }}
+                 
                 >
                   Formulaire de contact complet
                 </h3>

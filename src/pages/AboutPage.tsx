@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle2, Quote,ArrowRight, Award, ShieldCheck, Users, MapPin } from 'lucide-react';
 import { Layout } from '../components/layout/Layout';
+import { PageHeader } from '../components/ui/PageHeader';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { AGENCY_CONFIG, DIRECTRICE_MESSAGE } from '../data';
 import { buildWhatsAppLink, buildGeneralContactMessage } from '../utils/whatsapp';
@@ -33,7 +34,7 @@ export const AboutPage: React.FC = () => {
     title: `À Propos — ${AGENCY_CONFIG.name} · Plus de 10 ans d'histoire`,
     description: `Découvrez l'${AGENCY_CONFIG.name}, fondée par ${AGENCY_CONFIG.director.name}. Une référence immobilière sénégalaise présente à Dakar depuis plus de 10 ans.`,
     canonical: `${AGENCY_CONFIG.siteUrl}/a-propos`,
-    ogImage: '/logodiame.jpeg',
+    ogImage: '/logodiame.png',
   });
 
   const paragraphs = DIRECTRICE_MESSAGE.quote.split('\n\n').filter(Boolean);
@@ -41,19 +42,12 @@ export const AboutPage: React.FC = () => {
 
   return (
     <Layout>
-      {/* Hero */}
-      <div className="relative py-20 md:py-28 bg-[#10243A] overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle, #C8A96B 1px, transparent 1px)`, backgroundSize: '28px 28px' }} />
-        <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-amber-400 mb-4">Notre histoire · Plus de 10 ans</span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight" style={{ fontFamily: 'Georgia, serif' }}>
-            À Propos de l'Agence Immobilière Diame Diallo
-          </h1>
-          <p className="mt-4 text-white/70 text-sm sm:text-base max-w-xl mx-auto">
-            Une référence immobilière à Dakar fondée sur des valeurs d'écoute, d'intégrité et de transparence, au service de vos projets patrimoniaux depuis plus de 10 ans.
-          </p>
-        </div>
-      </div>
+      <PageHeader
+        kicker="Notre histoire · Plus de 10 ans"
+        title="À propos de l'Agence Immobilière Diame Diallo"
+        subtitle="Une référence immobilière à Dakar fondée sur l'écoute, l'intégrité et la transparence, au service de vos projets patrimoniaux."
+        crumbs={[{ label: 'Accueil', path: '/' }, { label: 'À propos' }]}
+      />
 
       {/* Stats Section */}
       <StatsSection />
@@ -76,14 +70,14 @@ export const AboutPage: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#10243A]/90 via-transparent to-transparent" />
               <div className="absolute bottom-5 left-5 right-5">
                 <p className="text-amber-400 text-xs font-bold uppercase tracking-widest mb-1">{AGENCY_CONFIG.director.role}</p>
-                <p className="text-white text-2xl font-black" style={{ fontFamily: 'Georgia, serif' }}>M. {AGENCY_CONFIG.director.name}</p>
+                <p className="text-white text-2xl font-black">M. {AGENCY_CONFIG.director.name}</p>
               </div>
             </div>
           </div>
 
           <div>
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-amber-500 mb-4">Le mot du Fondateur</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-[#10243A] mb-6 leading-tight" style={{ fontFamily: 'Georgia, serif' }}>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#10243A] mb-6 leading-tight">
               Plus de 10 ans de confiance et d'exigence à votre service à Dakar
             </h2>
             <Quote className="w-10 h-10 text-amber-500/30 mb-4" />
@@ -94,7 +88,7 @@ export const AboutPage: React.FC = () => {
                 </p>
               ))}
             </div>
-            <p className="text-amber-600 font-black text-xl" style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
+            <p className="text-amber-600 font-bold text-xl italic">
               {DIRECTRICE_MESSAGE.signature}
             </p>
             <p className="text-[#334155] text-xs mt-1">{DIRECTRICE_MESSAGE.role}</p>
@@ -104,8 +98,8 @@ export const AboutPage: React.FC = () => {
         {/* Our values */}
         <div>
           <div className="text-center mb-10">
-            <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#C8A96B] mb-3">Ce qui nous définit</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-[#10243A]" style={{ fontFamily: 'Georgia, serif' }}>Nos Valeurs</h2>
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#8a6a2a] mb-3">Ce qui nous définit</span>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#10243A]">Nos Valeurs</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {VALUES.map((v, i) => (
@@ -120,8 +114,8 @@ export const AboutPage: React.FC = () => {
         {/* Pillars */}
         <div>
           <div className="text-center mb-10">
-            <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#C8A96B] mb-3">Nos piliers</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-[#10243A]" style={{ fontFamily: 'Georgia, serif' }}>
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#8a6a2a] mb-3">Nos piliers</span>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#10243A]">
               Ce qui fait notre force
             </h2>
           </div>
@@ -148,7 +142,7 @@ export const AboutPage: React.FC = () => {
         >
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle, #C8A96B 1px, transparent 1px)`, backgroundSize: '28px 28px' }} />
           <div className="relative z-10">
-            <h2 className="text-2xl sm:text-3xl font-black mb-3" style={{ fontFamily: 'Georgia, serif' }}>Prêt(e) à démarrer votre projet ?</h2>
+            <h2 className="text-2xl sm:text-3xl font-black mb-3">Prêt(e) à démarrer votre projet ?</h2>
             <p className="text-white/70 mb-7 max-w-md mx-auto text-sm">Contactez-nous dès aujourd'hui pour un premier entretien sans engagement.</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a href={waHref} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-[#25D366] hover:bg-[#1DB954] text-white font-bold rounded-xl transition-colors">

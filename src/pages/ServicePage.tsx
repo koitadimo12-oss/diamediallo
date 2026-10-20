@@ -1,7 +1,8 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Home, TrendingUp, Key, Settings, MapPin, ShieldCheck, ArrowRight, ArrowLeft, CheckCircle2, MessageSquare, Phone } from 'lucide-react';
+import { Home, TrendingUp, Key, Settings, MapPin, ShieldCheck, ArrowRight, CheckCircle2, MessageSquare, Phone } from 'lucide-react';
 import { Layout } from '../components/layout/Layout';
+import { PageHeader } from '../components/ui/PageHeader';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { SERVICES_DATA, AGENCY_CONFIG } from '../data';
 import { buildWhatsAppLink } from '../utils/whatsapp';
@@ -53,10 +54,9 @@ export const ServicePage: React.FC = () => {
     title: meta.title,
     description: meta.description,
     canonical: `${AGENCY_CONFIG.siteUrl}/services/${service.slug}`,
-    ogImage: '/logodiame.jpeg',
+    ogImage: '/logodiame.png',
   });
 
-  const Icon = ICONS[service.iconName] ?? Home;
   const waMessage = encodeURIComponent(
     `Bonjour Agence Immobilière D.DIALLO,\n\nJe suis intéressé(e) par votre service « ${service.title} ».\n\nPouvez-vous me contacter ?\n\nMerci.`
   );
@@ -66,23 +66,16 @@ export const ServicePage: React.FC = () => {
 
   return (
     <Layout>
-      {/* Hero */}
-      <div className="relative py-20 md:py-28 bg-[#10243A] overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: `radial-gradient(circle, #C8A96B 1px, transparent 1px)`, backgroundSize: '28px 28px' }}
-        />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <div className="w-16 h-16 rounded-2xl bg-[#C8A96B]/20 border border-[#C8A96B]/40 flex items-center justify-center mx-auto mb-6">
-            <Icon className="w-7 h-7 text-[#C8A96B]" />
-          </div>
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#C8A96B] mb-4">Nos services</span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight" style={{ fontFamily: 'Georgia, serif' }}>
-            {service.title}
-          </h1>
-          <p className="mt-4 text-white/70 text-sm sm:text-base max-w-xl mx-auto">{service.shortDescription}</p>
-        </div>
-      </div>
+      <PageHeader
+        kicker="Nos services"
+        title={service.title}
+        subtitle={service.shortDescription}
+        crumbs={[
+          { label: 'Accueil', path: '/' },
+          { label: 'Services', path: '/services' },
+          { label: service.title },
+        ]}
+      />
 
       {/* Content */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -138,7 +131,7 @@ export const ServicePage: React.FC = () => {
               className="rounded-2xl p-6 text-white sticky top-24"
               style={{ background: 'linear-gradient(135deg, #10243A, #1a3550)' }}
             >
-              <h3 className="text-lg font-black mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+              <h3 className="text-lg font-bold mb-2">
                 Démarrer mon projet
               </h3>
               <p className="text-white/60 text-sm mb-5 leading-relaxed">

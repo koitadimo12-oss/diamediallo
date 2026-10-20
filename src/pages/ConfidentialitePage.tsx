@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, Lock, Eye, Database, ArrowLeft, Mail, Phone } from 'lucide-react';
 import { Layout } from '../components/layout/Layout';
+import { PageHeader } from '../components/ui/PageHeader';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { AGENCY_CONFIG } from '../data';
 
@@ -14,25 +15,12 @@ export const ConfidentialitePage: React.FC = () => {
 
   return (
     <Layout>
-      {/* Header */}
-      <div className="relative py-20 md:py-24 bg-[#10243A] overflow-hidden text-white">
-        <div
-          className="absolute inset-0 opacity-10 pointer-events-none"
-          style={{ backgroundImage: `radial-gradient(circle, #C8A96B 1px, transparent 1px)`, backgroundSize: '28px 28px' }}
-        />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-[#C8A96B] text-xs font-bold uppercase tracking-wider mb-4 border border-white/20">
-            <Lock className="w-4 h-4 text-[#C8A96B]" />
-            Protection des Données Personnelles
-          </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-4" style={{ fontFamily: 'Georgia, serif' }}>
-            Politique de Confidentialité
-          </h1>
-          <p className="text-white/75 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            Engagements de l'Agence Immobilière D.DIALLO concernant la collecte, l'utilisation et la sécurisation de vos données personnelles.
-          </p>
-        </div>
-      </div>
+      <PageHeader
+        kicker="Protection des données"
+        title="Politique de confidentialité"
+        subtitle="Engagements concernant la collecte, l'utilisation et la sécurisation de vos données personnelles."
+        crumbs={[{ label: 'Accueil', path: '/' }, { label: 'Confidentialité' }]}
+      />
 
       {/* Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -42,7 +30,7 @@ export const ConfidentialitePage: React.FC = () => {
           <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
             <div className="flex items-center gap-3 mb-5 pb-4 border-b border-slate-100">
               <ShieldCheck className="w-6 h-6 text-[#10243A]" />
-              <h2 className="text-xl font-bold text-[#10243A]" style={{ fontFamily: 'Georgia, serif' }}>
+              <h2 className="text-xl font-bold text-[#10243A]">
                 1. Cadre légal et responsable de traitement
               </h2>
             </div>
@@ -58,7 +46,7 @@ export const ConfidentialitePage: React.FC = () => {
           <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
             <div className="flex items-center gap-3 mb-5 pb-4 border-b border-slate-100">
               <Database className="w-6 h-6 text-[#10243A]" />
-              <h2 className="text-xl font-bold text-[#10243A]" style={{ fontFamily: 'Georgia, serif' }}>
+              <h2 className="text-xl font-bold text-[#10243A]">
                 2. Données personnelles collectées
               </h2>
             </div>
@@ -79,7 +67,7 @@ export const ConfidentialitePage: React.FC = () => {
           <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
             <div className="flex items-center gap-3 mb-5 pb-4 border-b border-slate-100">
               <Eye className="w-6 h-6 text-[#10243A]" />
-              <h2 className="text-xl font-bold text-[#10243A]" style={{ fontFamily: 'Georgia, serif' }}>
+              <h2 className="text-xl font-bold text-[#10243A]">
                 3. Finalités de traitement
               </h2>
             </div>
@@ -103,7 +91,7 @@ export const ConfidentialitePage: React.FC = () => {
           <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
             <div className="flex items-center gap-3 mb-5 pb-4 border-b border-slate-100">
               <Lock className="w-6 h-6 text-[#10243A]" />
-              <h2 className="text-xl font-bold text-[#10243A]" style={{ fontFamily: 'Georgia, serif' }}>
+              <h2 className="text-xl font-bold text-[#10243A]">
                 4. Sécurité des données & Durée de conservation
               </h2>
             </div>
@@ -119,7 +107,7 @@ export const ConfidentialitePage: React.FC = () => {
           <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
             <div className="flex items-center gap-3 mb-5 pb-4 border-b border-slate-100">
               <ShieldCheck className="w-6 h-6 text-emerald-600" />
-              <h2 className="text-xl font-bold text-[#10243A]" style={{ fontFamily: 'Georgia, serif' }}>
+              <h2 className="text-xl font-bold text-[#10243A]">
                 5. Vos droits et contact
               </h2>
             </div>

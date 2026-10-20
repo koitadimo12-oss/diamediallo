@@ -120,7 +120,7 @@ export const MotDeDirectrice: React.FC = () => {
                       {AGENCY_CONFIG.director.role}
                     </p>
                   </div>
-                  <h3 className="text-white text-2xl font-black tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
+                  <h3 className="text-white text-2xl font-black tracking-tight">
                     {AGENCY_CONFIG.director.name}
                   </h3>
                   <p className="text-white/60 text-xs mt-1 flex items-center gap-1.5">
@@ -163,7 +163,7 @@ export const MotDeDirectrice: React.FC = () => {
             <h2
               id="mot-heading"
               className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-6 leading-tight"
-              style={{ fontFamily: 'Georgia, serif' }}
+             
             >
               Votre confiance est notre plus belle réussite
             </h2>
@@ -193,10 +193,7 @@ export const MotDeDirectrice: React.FC = () => {
             {/* Signature & Actions */}
             <div className="mt-10 pt-8 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
               <div>
-                <p
-                  className="text-amber-400 text-2xl font-black tracking-wide"
-                  style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic' }}
-                >
+                <p className="text-amber-400 text-2xl font-bold tracking-wide italic">
                   {DIRECTRICE_MESSAGE.signature}
                 </p>
                 <p className="text-white/50 text-xs mt-1">

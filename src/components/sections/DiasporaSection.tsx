@@ -67,7 +67,7 @@ export const DiasporaSection: React.FC = () => {
           <h2
             id="diaspora-heading"
             className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight mb-4"
-            style={{ fontFamily: 'Georgia, serif' }}
+           
           >
             Investir au Sénégal, même à distance.
           </h2>
@@ -90,7 +90,7 @@ export const DiasporaSection: React.FC = () => {
                   <div className="w-11 h-11 rounded-xl bg-[#C8A96B]/15 text-[#C8A96B] flex items-center justify-center font-bold text-sm">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <span className="text-2xl font-black text-white/20 group-hover:text-[#C8A96B]/40 transition-colors" style={{ fontFamily: 'Georgia, serif' }}>
+                  <span className="text-2xl font-black text-white/20 group-hover:text-[#C8A96B]/40 transition-colors">
                     {item.step}
                   </span>
                 </div>

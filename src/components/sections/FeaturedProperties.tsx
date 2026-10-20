@@ -207,19 +207,19 @@ export const FeaturedProperties: React.FC = () => {
         {/* Heading */}
         <div className="properties-heading flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 mb-10">
           <div>
-            <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#C8A96B] mb-3">
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#8a6a2a] mb-3">
               Sélection de l'agence
             </span>
             <h2
               id="properties-heading"
               className="text-3xl sm:text-4xl md:text-5xl font-black text-[#10243A] leading-tight"
-              style={{ fontFamily: 'Georgia, serif' }}
+             
             >
               Biens à la Une
             </h2>
             <p className="mt-3 text-[#334155] max-w-lg text-sm sm:text-base">
               Une sélection représentative de notre portefeuille.{' '}
-              <span className="text-[#C8A96B] font-semibold">Exemples de démonstration</span> : contactez-nous pour consulter le portefeuille en temps réel.
+              <span className="text-[#8a6a2a] font-semibold">Exemples de démonstration</span> : contactez-nous pour consulter le portefeuille en temps réel.
             </p>
           </div>
           <Link

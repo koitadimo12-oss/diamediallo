@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, MessageSquare, ChevronDown } from 'lucide-react';
+import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 import { Logo } from '../ui/Logo';
 import { AGENCY_CONFIG } from '../../data';
 import { buildWhatsAppLink, buildGeneralContactMessage } from '../../utils/whatsapp';
@@ -65,12 +65,12 @@ export const Navbar: React.FC = () => {
         role="banner"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'bg-white/97 backdrop-blur-xl shadow-lg shadow-[#10243A]/8 border-b border-[#C8A96B]/20'
-            : 'bg-white/90 backdrop-blur-md border-b border-transparent'
+            ? 'bg-[#faf7f1]/97 backdrop-blur-xl shadow-sm border-b border-[#e4dccb]'
+            : 'bg-[#faf7f1]/92 backdrop-blur-md border-b border-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-18 py-3">
+          <div className="flex items-center justify-between min-h-[var(--nav-h)] py-2">
             {/* Logo */}
             <Link to="/" aria-label="Accueil – Agence Immobilière Diame Diallo" className="flex-shrink-0">
               <Logo variant="compact" />

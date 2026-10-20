@@ -11,9 +11,10 @@ import {
   ShieldCheck,
   Building2,
   Clock,
-  ExternalLink,
   CheckCircle2,
   ChevronRight,
+  MessageCircle,
+  HelpCircle,
 } from 'lucide-react';
 
 interface FooterProps {
@@ -22,279 +23,388 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   const handleWhatsAppContact = () => {
     const message = encodeURIComponent(
-      "Bonjour Agence Immobilière Diame Diallo, je vous contacte depuis le pied de page de votre site pour un projet immobilier à Dakar."
+      'Bonjour Agence Immobilière Diame Diallo, je vous contacte depuis le pied de page de votre site pour un projet immobilier.'
     );
-    window.open(`https://wa.me/${AGENCY_INFO.whatsapp.replace(/\+/g, '')}?text=${message}`, '_blank');
+
+    const phone = AGENCY_INFO.whatsapp.replace(/\D/g, '');
+
+    window.open(
+      `https://wa.me/${phone}?text=${message}`,
+      '_blank',
+      'noopener,noreferrer'
+    );
   };
 
+  const navigationLinks = [
+    { label: 'Accueil', section: 'accueil' },
+    { label: 'Nos biens immobiliers', section: 'biens' },
+    { label: 'Nos services', section: 'services' },
+    { label: 'Simulateur immobilier', section: 'simulateur' },
+    { label: 'Questions fréquentes (FAQ)', section: 'faq' },
+  ];
+
+  const servicesLinks = [
+    { label: 'Achat immobilier', section: 'services' },
+    { label: 'Vente immobilière', section: 'services' },
+    { label: 'Location immobilière', section: 'services' },
+    { label: 'Gestion immobilière', section: 'services' },
+    { label: 'Estimation de biens', section: 'services' },
+  ];
+
+  const zones = [
+    'Dakar',
+    'Almadies',
+    'Ngor',
+    'Yoff',
+    'Mermoz',
+    'Plateau',
+  ];
+
   return (
-    <footer id="footer" className="bg-[#000a14] text-white relative z-20 overflow-hidden">
-      {/* Subtle top golden line */}
-      <div className="h-[3px] w-full bg-gradient-to-r from-amber-600 via-amber-400 to-amber-600" />
+    <footer
+      id="footer"
+      className="relative z-20 overflow-hidden bg-[#000a14] text-white"
+    >
+      {/* Décoration de fond */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -right-40 top-20 h-80 w-80 rounded-full bg-amber-500/5 blur-3xl" />
+        <div className="absolute -left-40 bottom-0 h-80 w-80 rounded-full bg-sky-500/5 blur-3xl" />
+      </div>
 
-      {/* Pre-Footer Callout Banner */}
-      <div className="border-b border-white/10 bg-[#001224]/80 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#d97706] mb-1 block font-['Work_Sans']">
-                Besoin d'un accompagnement personnalisé ?
-              </span>
-              <h3 className="font-['Manrope'] font-extrabold text-xl sm:text-2xl text-white">
-                Discutez directement avec un expert immobilier
-              </h3>
-              <p className="text-sm text-neutral-400 mt-0.5">
-                Agence physique à Colobane • Réponse rapide 7j/7 pour le Sénégal et la diaspora.
-              </p>
-            </div>
+      {/* Bannière de contact */}
+      <div className="relative border-b border-white/10">
+        <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:px-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative overflow-hidden rounded-3xl border border-amber-400/20 bg-gradient-to-r from-[#10243a] via-[#0b1c2d] to-[#142a40] p-7 sm:p-10"
+          >
+            <div className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full border border-amber-400/10" />
+            <div className="pointer-events-none absolute -right-4 -top-4 h-32 w-32 rounded-full border border-amber-400/10" />
 
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                onClick={handleWhatsAppContact}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-[4px] bg-[#25D366] hover:bg-[#20ba59] text-white font-['Manrope'] font-bold text-sm shadow-md transition-colors cursor-pointer"
-              >
-                <FaWhatsapp className="w-5 h-5" />
-                <span>WhatsApp : 77 526 41 07</span>
-              </motion.button>
-              
-              <a
-                href={`tel:${AGENCY_INFO.phone.replace(/\s+/g, '')}`}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-[4px] bg-white/10 hover:bg-white/20 text-white font-['Work_Sans'] font-semibold text-sm border border-white/20 transition-colors"
-              >
-                <Phone className="w-4 h-4 text-amber-400" />
-                <span>{AGENCY_INFO.phone}</span>
-              </a>
+            <div className="relative flex flex-col items-start justify-between gap-7 md:flex-row md:items-center">
+              <div className="max-w-2xl">
+                <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-amber-400">
+                  <MessageCircle className="h-4 w-4" />
+                  Parlons de votre projet
+                </span>
+
+                <h2 className="text-2xl font-black leading-tight sm:text-3xl lg:text-4xl">
+                  Votre prochain projet immobilier
+                  <span className="block text-amber-400">
+                    commence ici.
+                  </span>
+                </h2>
+
+                <p className="mt-4 max-w-xl text-sm leading-7 text-slate-300 sm:text-base">
+                  Achat, vente, location ou investissement : notre équipe vous
+                  accompagne pour trouver la solution adaptée à vos besoins.
+                </p>
+              </div>
+
+              <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+                <button
+                  type="button"
+                  onClick={handleWhatsAppContact}
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-400 px-6 py-3.5 font-bold text-[#071321] transition duration-300 hover:-translate-y-1 hover:bg-amber-300"
+                >
+                  <FaWhatsapp className="h-5 w-5" />
+                  Nous contacter
+                </button>
+
+                <a
+                  href={`tel:${AGENCY_INFO.phone}`}
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 font-bold text-white transition duration-300 hover:border-amber-400/50 hover:bg-white/10"
+                >
+                  <Phone className="h-4 w-4" />
+                  Nous appeler
+                </a>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
-      {/* Main Footer Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
-          
-          {/* Column 1: Brand & Identity (4 cols) */}
-          <div className="lg:col-span-4 space-y-4">
-            <div className="inline-block cursor-pointer" onClick={() => onNavigate('accueil')}>
+      {/* Contenu principal du footer */}
+      <div className="relative mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+          {/* Colonne 1 : agence */}
+          <div>
+            <button
+              type="button"
+              onClick={() => onNavigate('accueil')}
+              aria-label="Retour à l'accueil"
+              className="mb-5 inline-block text-left"
+            >
               <Logo variant="full" size="md" />
-            </div>
+            </button>
 
-            <p className="text-sm text-neutral-300 leading-relaxed max-w-sm">
-              L'élégance de l'immobilier sénégalais couplée à une rigueur juridique internationale. Achat, vente, location et gestion de patrimoine d'exception à Dakar et dans tout le Sénégal.
+            <p className="max-w-sm text-sm leading-7 text-slate-400">
+              Votre partenaire immobilier de confiance au Sénégal. Nous vous
+              accompagnons dans vos projets d'achat, de vente, de location et
+              d'investissement immobilier.
             </p>
 
-            {/* Leadership & Registry Badge */}
-            <div className="p-3.5 rounded-lg bg-white/5 border border-white/10 text-xs space-y-1.5 max-w-sm">
-              <div className="flex items-center gap-2 text-amber-400 font-bold">
-                <Building2 className="w-3.5 h-3.5" />
-                <span>Direction Générale : M. Diame Diallo</span>
+            <div className="mt-6 flex items-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-amber-400/20 bg-amber-400/10">
+                <ShieldCheck className="h-5 w-5 text-amber-400" />
+              </span>
+
+              <div>
+                <p className="text-sm font-bold text-white">
+                  Un accompagnement personnalisé
+                </p>
+                <p className="mt-1 text-xs text-slate-400">
+                  À chaque étape de votre projet
+                </p>
               </div>
-              <p className="text-neutral-400 text-[11px] leading-normal">
-                Agence Immobilière SUARL agréée • Siège officiel : Rue de Colobane, Dakar.
-              </p>
             </div>
           </div>
 
-          {/* Column 2: Services & Solutions (3 cols) */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="font-['Manrope'] font-bold text-sm uppercase tracking-wider text-amber-400">
-              Nos Services
-            </h4>
-            <div className="w-8 h-[2px] bg-amber-500 rounded-full mb-2" />
+          {/* Colonne 2 : navigation et services */}
+          <div>
+            <h3 className="mb-6 flex items-center gap-2 text-base font-black text-white">
+              <span className="h-5 w-1 rounded-full bg-amber-400" />
+              Navigation
+            </h3>
 
-            <ul className="space-y-2 text-sm text-neutral-300">
-              <li>
-                <button
-                  onClick={() => onNavigate('biens')}
-                  className="hover:text-amber-400 transition-colors inline-flex items-center gap-1.5 text-left group"
-                >
-                  <ChevronRight className="w-3.5 h-3.5 text-amber-500 group-hover:translate-x-0.5 transition-transform" />
-                  <span>Vente de Maisons & Villas</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('biens')}
-                  className="hover:text-amber-400 transition-colors inline-flex items-center gap-1.5 text-left group"
-                >
-                  <ChevronRight className="w-3.5 h-3.5 text-amber-500 group-hover:translate-x-0.5 transition-transform" />
-                  <span>Location d'Appartements Standing</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('biens')}
-                  className="hover:text-amber-400 transition-colors inline-flex items-center gap-1.5 text-left group"
-                >
-                  <ChevronRight className="w-3.5 h-3.5 text-amber-500 group-hover:translate-x-0.5 transition-transform" />
-                  <span>Terrains avec Titre Foncier</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('services')}
-                  className="hover:text-amber-400 transition-colors inline-flex items-center gap-1.5 text-left group"
-                >
-                  <ChevronRight className="w-3.5 h-3.5 text-amber-500 group-hover:translate-x-0.5 transition-transform" />
-                  <span>Gestion Locative & Recouvrement</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('services')}
-                  className="hover:text-amber-400 transition-colors inline-flex items-center gap-1.5 text-left group"
-                >
-                  <ChevronRight className="w-3.5 h-3.5 text-amber-500 group-hover:translate-x-0.5 transition-transform" />
-                  <span>Accompagnement Investisseurs Diaspora</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('simulateur')}
-                  className="hover:text-amber-400 transition-colors inline-flex items-center gap-1.5 text-left group"
-                >
-                  <ChevronRight className="w-3.5 h-3.5 text-amber-500 group-hover:translate-x-0.5 transition-transform" />
-                  <span>Simulateur Financier & Prêt Immobilier</span>
-                </button>
-              </li>
+            <ul className="space-y-3">
+              {navigationLinks.map((link) => (
+                <li key={link.section}>
+                  <button
+                    type="button"
+                    onClick={() => onNavigate(link.section)}
+                    className="group inline-flex items-center gap-2 text-left text-sm text-slate-400 transition-colors hover:text-amber-400"
+                  >
+                    <ChevronRight className="h-4 w-4 shrink-0 text-amber-500 transition-transform group-hover:translate-x-1" />
+                    <span>{link.label}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+
+            <h4 className="mb-4 mt-8 text-sm font-bold text-white">
+              Nos services
+            </h4>
+
+            <ul className="space-y-3">
+              {servicesLinks.map((link, index) => (
+                <li key={`${link.label}-${index}`}>
+                  <button
+                    type="button"
+                    onClick={() => onNavigate(link.section)}
+                    className="group inline-flex items-center gap-2 text-left text-sm text-slate-400 transition-colors hover:text-amber-400"
+                  >
+                    <ChevronRight className="h-4 w-4 shrink-0 text-amber-500 transition-transform group-hover:translate-x-1" />
+                    <span>{link.label}</span>
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Column 3: Zones d'Intervention (2 cols) */}
-          <div className="lg:col-span-2 space-y-3">
-            <h4 className="font-['Manrope'] font-bold text-sm uppercase tracking-wider text-amber-400">
-              Zones d'Activité
-            </h4>
-            <div className="w-8 h-[2px] bg-amber-500 rounded-full mb-2" />
+          {/* Colonne 3 : zones */}
+          <div>
+            <h3 className="mb-6 flex items-center gap-2 text-base font-black text-white">
+              <span className="h-5 w-1 rounded-full bg-amber-400" />
+              Zones d'activité
+            </h3>
 
-            <ul className="space-y-1.5 text-xs text-neutral-300">
-              <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                <span>Colobane (Siège)</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                <span>Dakar Plateau</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                <span>Les Almadies & Ngor</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                <span>Fann & Corniche Ouest</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                <span>Mermoz & Keur Gorgui</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                <span>Sacré-Cœur & VDN</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                <span>Diamniadio & Rufisque</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                <span>Saly & Petite-Côte</span>
-              </li>
+            <p className="mb-5 text-sm leading-6 text-slate-400">
+              Nous vous accompagnons dans vos projets immobiliers à Dakar et
+              dans ses environs.
+            </p>
+
+            <ul className="grid grid-cols-2 gap-3">
+              {zones.map((zone) => (
+                <li
+                  key={zone}
+                  className="flex items-center gap-2 text-sm text-slate-400"
+                >
+                  <MapPin className="h-4 w-4 shrink-0 text-amber-400" />
+                  {zone}
+                </li>
+              ))}
             </ul>
-          </div>
 
-          {/* Column 4: Contact & Agence (3 cols) */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="font-['Manrope'] font-bold text-sm uppercase tracking-wider text-amber-400">
-              Coordonnées
-            </h4>
-            <div className="w-8 h-[2px] bg-amber-500 rounded-full mb-2" />
+            <div className="mt-7 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+              <div className="flex items-start gap-3">
+                <Building2 className="mt-0.5 h-5 w-5 shrink-0 text-amber-400" />
 
-            <div className="space-y-3 text-sm text-neutral-300">
-              <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
-                <span>{AGENCY_INFO.address}</span>
-              </div>
-
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-amber-400 flex-shrink-0" />
-                <a href={`tel:${AGENCY_INFO.phone.replace(/\s+/g, '')}`} className="hover:text-white transition-colors">
-                  {AGENCY_INFO.phone}
-                </a>
-              </div>
-
-              <div className="flex items-center gap-2.5">
-               <FaWhatsapp className="w-5 h-5" />
-                <button onClick={handleWhatsAppContact} className="hover:text-green-400 transition-colors text-left">
-                  WhatsApp : 77 526 41 07
-                </button>
-              </div>
-
-              <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-amber-400 flex-shrink-0" />
-                <a href={`mailto:${AGENCY_INFO.email}`} className="hover:text-white transition-colors">
-                  {AGENCY_INFO.email}
-                </a>
-              </div>
-
-              <div className="flex items-start gap-2.5 text-xs text-neutral-400 pt-2 border-t border-white/10">
-                <Clock className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <span className="text-white block font-medium">Ouverture de l'agence :</span>
-                  <span>Lun - Ven : 08h30 - 18h30</span>
-                  <br />
-                  <span>Samedi : 09h00 - 15h00</span>
+                  <p className="text-sm font-bold text-white">
+                    Votre projet, notre priorité
+                  </p>
+                  <p className="mt-1 text-xs leading-5 text-slate-400">
+                    Parlons ensemble de vos besoins immobiliers.
+                  </p>
+
+                  <button
+                    type="button"
+                    onClick={() => onNavigate('contact')}
+                    className="mt-3 text-xs font-bold text-amber-400 transition-colors hover:text-amber-300"
+                  >
+                    Découvrir nos solutions →
+                  </button>
                 </div>
               </div>
             </div>
           </div>
 
+          {/* Colonne 4 : contact */}
+          <div>
+            <h3 className="mb-6 flex items-center gap-2 text-base font-black text-white">
+              <span className="h-5 w-1 rounded-full bg-amber-400" />
+              Contact
+            </h3>
+
+            <ul className="space-y-5">
+              <li className="flex items-start gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-400/20 bg-amber-400/10">
+                  <MapPin className="h-5 w-5 text-amber-400" />
+                </span>
+
+                <div>
+                  <p className="text-sm font-bold text-white">Adresse</p>
+                  <p className="mt-1 text-sm leading-6 text-slate-400">
+                    {AGENCY_INFO.address}
+                  </p>
+                </div>
+              </li>
+
+              <li className="flex items-start gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-400/20 bg-amber-400/10">
+                  <Phone className="h-5 w-5 text-amber-400" />
+                </span>
+
+                <div>
+                  <p className="text-sm font-bold text-white">Téléphone</p>
+                  <a
+                    href={`tel:${AGENCY_INFO.phone}`}
+                    className="mt-1 inline-block text-sm text-slate-400 transition-colors hover:text-amber-400"
+                  >
+                    {AGENCY_INFO.phone}
+                  </a>
+                </div>
+              </li>
+
+              <li className="flex items-start gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-400/20 bg-amber-400/10">
+                  <Mail className="h-5 w-5 text-amber-400" />
+                </span>
+
+                <div>
+                  <p className="text-sm font-bold text-white">E-mail</p>
+                  <a
+                    href={`mailto:${AGENCY_INFO.email}`}
+                    className="mt-1 break-all text-sm text-slate-400 transition-colors hover:text-amber-400"
+                  >
+                    {AGENCY_INFO.email}
+                  </a>
+                </div>
+              </li>
+
+              <li className="flex items-start gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-400/20 bg-amber-400/10">
+                  <Clock className="h-5 w-5 text-amber-400" />
+                </span>
+
+                <div>
+                  <p className="text-sm font-bold text-white">
+                    Disponibilité
+                  </p>
+                  <p className="mt-1 text-sm leading-6 text-slate-400">
+                    Contactez-nous pour échanger sur votre projet.
+                  </p>
+                </div>
+              </li>
+            </ul>
+
+            <button
+              type="button"
+              onClick={handleWhatsAppContact}
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-green-500/20 bg-green-500/10 px-4 py-3 text-sm font-bold text-green-400 transition-colors hover:bg-green-500/20"
+            >
+              <FaWhatsapp className="h-5 w-5" />
+              Écrire sur WhatsApp
+            </button>
+          </div>
         </div>
 
-        {/* Security / Notarial Trust Seal */}
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400 bg-white/[0.02] p-4 rounded-xl">
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="w-5 h-5 text-amber-400 flex-shrink-0" />
-            <span>
-              <strong className="text-white">Garantie & Sécurité Immobilière :</strong> Tous nos biens font l'objet d'une vérification notariée et cadastrale rigoureuse.
-            </span>
-          </div>
-          <div className="flex items-center gap-2 text-neutral-300">
-            <CheckCircle2 className="w-4 h-4 text-green-400" />
-            <span>Titres Fonciers & Baux Authentifiés</span>
-          </div>
+        {/* Engagements */}
+        <div className="mt-14 grid grid-cols-1 gap-4 border-y border-white/10 py-7 sm:grid-cols-3">
+          {[
+            'Accompagnement personnalisé',
+            'Conseils adaptés à vos besoins',
+            'Suivi de votre projet immobilier',
+          ].map((item) => (
+            <div key={item} className="flex items-center gap-3">
+              <CheckCircle2 className="h-5 w-5 shrink-0 text-amber-400" />
+              <span className="text-sm text-slate-300">{item}</span>
+            </div>
+          ))}
         </div>
 
-        {/* Bottom Bar: Copyright & Back to Top */}
-        <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
-          <div className="text-center sm:text-left space-y-1">
-            <p>
-              © {new Date().getFullYear()} <strong className="text-neutral-300">Agence Immobilière Diame Diallo SUARL</strong>. Tous droits réservés.
+        {/* Bas du footer */}
+        <div className="flex flex-col items-start justify-between gap-5 pt-7 sm:flex-row sm:items-center">
+          <div>
+            <p className="text-sm text-slate-400">
+              © {new Date().getFullYear()} Agence Immobilière Diame Diallo.
             </p>
-            <p className="text-[11px] text-neutral-600">
-              Immobilier de prestige au Sénégal • RCCM Dakar • NINEA disponible sur demande.
+            <p className="mt-1 text-xs text-slate-500">
+              Tous droits réservés.
             </p>
           </div>
 
-          <motion.button
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={scrollToTop}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-[4px] bg-white/10 hover:bg-white/20 text-neutral-300 hover:text-white transition-colors cursor-pointer text-xs font-semibold"
-          >
-            <ArrowUp className="w-3.5 h-3.5 text-amber-400" />
-            <span>Retour en haut</span>
-          </motion.button>
-        </div>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+            <button
+              type="button"
+              onClick={() => onNavigate('mentions-legales')}
+              className="text-xs text-slate-400 transition-colors hover:text-amber-400"
+            >
+              Mentions légales
+            </button>
 
+            <button
+              type="button"
+              onClick={() => onNavigate('confidentialite')}
+              className="text-xs text-slate-400 transition-colors hover:text-amber-400"
+            >
+              Confidentialité
+            </button>
+
+            <button
+              type="button"
+              onClick={() => onNavigate('faq')}
+              className="inline-flex items-center gap-1.5 text-xs text-slate-400 transition-colors hover:text-amber-400"
+            >
+              <HelpCircle className="h-4 w-4" />
+              FAQ
+            </button>
+
+            <button
+              type="button"
+              onClick={scrollToTop}
+              aria-label="Retour en haut de page"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-amber-400 transition-all hover:-translate-y-1 hover:border-amber-400/40 hover:bg-amber-400/10"
+            >
+              <ArrowUp className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
       </div>
     </footer>
   );
 };
+
+export default Footer;

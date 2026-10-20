@@ -1,7 +1,8 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, BookOpen, Clock, Calendar, CheckCircle2, ShieldAlert, MessageSquare } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ShieldAlert } from 'lucide-react';
 import { Layout } from '../components/layout/Layout';
+import { PageHeader } from '../components/ui/PageHeader';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { ARTICLES_DATA, AGENCY_CONFIG } from '../data';
 import { buildWhatsAppLink } from '../utils/whatsapp';
@@ -14,7 +15,7 @@ export const ConseilDetailPage: React.FC = () => {
     title: `${article.title} | ${AGENCY_CONFIG.name}`,
     description: article.summary,
     canonical: `${AGENCY_CONFIG.siteUrl}/conseils/${article.slug}`,
-    ogImage: '/logodiame.jpeg',
+    ogImage: '/logodiame.png',
   });
 
   const otherArticles = ARTICLES_DATA.filter((a) => a.id !== article.id);
@@ -24,40 +25,16 @@ export const ConseilDetailPage: React.FC = () => {
 
   return (
     <Layout>
-      {/* Article Header */}
-      <div className="relative py-16 md:py-24 bg-[#10243A] text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <Link
-            to="/conseils"
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#C8A96B] hover:text-white transition-colors mb-6"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" /> Retour aux conseils
-          </Link>
-
-          <div className="flex flex-wrap items-center gap-4 text-xs text-white/60 mb-4">
-            <span className="px-3 py-1 rounded-full bg-white/10 text-amber-300 font-bold uppercase tracking-wider">
-              {article.categoryLabel}
-            </span>
-            <span className="flex items-center gap-1">
-              <Clock className="w-3.5 h-3.5" /> {article.readTime}
-            </span>
-            <span className="flex items-center gap-1">
-              <Calendar className="w-3.5 h-3.5" /> {article.publishedDate}
-            </span>
-          </div>
-
-          <h1
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-white mb-6"
-            style={{ fontFamily: 'Georgia, serif' }}
-          >
-            {article.title}
-          </h1>
-
-          <p className="text-base sm:text-lg text-white/80 leading-relaxed max-w-3xl">
-            {article.summary}
-          </p>
-        </div>
-      </div>
+      <PageHeader
+        kicker={`${article.categoryLabel} · ${article.readTime}`}
+        title={article.title}
+        subtitle={article.summary}
+        crumbs={[
+          { label: 'Accueil', path: '/' },
+          { label: 'Conseils', path: '/conseils' },
+          { label: article.title },
+        ]}
+      />
 
       {/* Article Body */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-14">
@@ -96,7 +73,7 @@ export const ConseilDetailPage: React.FC = () => {
         {/* Action Card */}
         <div className="rounded-2xl bg-[#10243A] text-white p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl mb-14">
           <div>
-            <h3 className="text-xl font-bold mb-1" style={{ fontFamily: 'Georgia, serif' }}>
+            <h3 className="text-xl font-bold mb-1">
               Une question spécifique sur votre projet ?
             </h3>
             <p className="text-xs sm:text-sm text-white/70">
