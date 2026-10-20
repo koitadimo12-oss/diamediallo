@@ -53,7 +53,7 @@ export const ServicePage: React.FC = () => {
     title: meta.title,
     description: meta.description,
     canonical: `${AGENCY_CONFIG.siteUrl}/services/${service.slug}`,
-    ogImage: '/logodiame.jpeg',
+    ogImage: '/logodiame.png',
   });
 
   const Icon = ICONS[service.iconName] ?? Home;

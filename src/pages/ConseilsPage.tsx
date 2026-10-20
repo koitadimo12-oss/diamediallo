@@ -10,7 +10,7 @@ export const ConseilsPage: React.FC = () => {
     title: `Conseils & Pédagogie Foncière | ${AGENCY_CONFIG.name}`,
     description: `Guides pratiques et décryptages fonciers pour vos projets immobiliers à Dakar : comprendre le titre foncier, le bail, la délibération et éviter les fraudes.`,
     canonical: `${AGENCY_CONFIG.siteUrl}/conseils`,
-    ogImage: '/logodiame.jpeg',
+    ogImage: '/logodiame.png',
   });
 
   const [selectedCategory, setSelectedCategory] = useState<string>('all');

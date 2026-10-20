@@ -33,7 +33,7 @@ export const AboutPage: React.FC = () => {
     title: `À Propos — ${AGENCY_CONFIG.name} · Plus de 20 ans d'histoire`,
     description: `Découvrez l'${AGENCY_CONFIG.name}, fondée par ${AGENCY_CONFIG.director.name}. Une référence immobilière sénégalaise présente à Dakar depuis plus de 20 ans.`,
     canonical: `${AGENCY_CONFIG.siteUrl}/a-propos`,
-    ogImage: '/logodiame.jpeg',
+    ogImage: '/logodiame.png',
   });
 
   const paragraphs = DIRECTRICE_MESSAGE.quote.split('\n\n').filter(Boolean);

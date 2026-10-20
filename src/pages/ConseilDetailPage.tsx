@@ -14,7 +14,7 @@ export const ConseilDetailPage: React.FC = () => {
     title: `${article.title} | ${AGENCY_CONFIG.name}`,
     description: article.summary,
     canonical: `${AGENCY_CONFIG.siteUrl}/conseils/${article.slug}`,
-    ogImage: '/logodiame.jpeg',
+    ogImage: '/logodiame.png',
   });
 
   const otherArticles = ARTICLES_DATA.filter((a) => a.id !== article.id);

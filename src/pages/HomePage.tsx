@@ -18,7 +18,7 @@ export const HomePage: React.FC = () => {
     title: `${AGENCY_CONFIG.name} — Partenaire de confiance pour vos projets fonciers au Sénégal`,
     description: `${AGENCY_CONFIG.name} (${AGENCY_CONFIG.commonName}) à Colobane, Dakar. Achat et vente de terrains, gestion locative, intermédiation immobilière et conseil foncier au Sénégal.`,
     canonical: `${AGENCY_CONFIG.siteUrl}/`,
-    ogImage: '/logodiame.jpeg',
+    ogImage: '/logodiame.png',
   });
 
   return (

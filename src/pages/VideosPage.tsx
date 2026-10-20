@@ -10,7 +10,7 @@ export const VideosPage: React.FC = () => {
     title: `Interviews & Vidéos Officielles | ${AGENCY_CONFIG.name}`,
     description: `Découvrez les interviews et décryptages fonciers de M. Diamé Diallo sur YouTube (Manael TV). Formalités de titres fonciers, baux et chantiers à Dakar et Colobane.`,
     canonical: `${AGENCY_CONFIG.siteUrl}/videos`,
-    ogImage: '/logodiame.jpeg',
+    ogImage: '/logodiame.png',
   });
 
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);

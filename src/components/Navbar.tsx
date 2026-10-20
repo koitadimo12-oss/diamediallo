@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Phone, ShieldCheck, MapPin } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
-import { Logo } from './Logo';
 import { AGENCY_INFO } from '../data/properties';
 
 interface NavbarProps {
@@ -23,7 +22,9 @@ export const Navbar: React.FC<NavbarProps> = ({
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+
     window.addEventListener('scroll', handleScroll);
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -43,13 +44,21 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const openWhatsApp = () => {
     const message = encodeURIComponent(
-      "Bonjour Agence Immobilière Diame Diallo, je souhaiterais obtenir des informations sur vos biens immobiliers disponibles à Dakar."
+      'Bonjour Agence Immobilière Diame Diallo, je souhaiterais obtenir des informations sur vos biens immobiliers disponibles à Dakar.'
     );
-    window.open(`https://wa.me/${AGENCY_INFO.whatsapp.replace(/\+/g, '')}?text=${message}`, '_blank');
+
+    const phone = AGENCY_INFO.whatsapp.replace(/\+/g, '').replace(/\s/g, '');
+
+    window.open(
+      `https://wa.me/${phone}?text=${message}`,
+      '_blank',
+      'noopener,noreferrer'
+    );
   };
 
   return (
     <>
+      {/* Barre de navigation */}
       <header
         id="main-navbar"
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
@@ -59,21 +68,21 @@ export const Navbar: React.FC<NavbarProps> = ({
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo officiel sans fond ni cadre */}
           <button
             id="nav-logo-btn"
             onClick={() => handleNavClick('accueil')}
-            className="flex items-center text-left focus:outline-none group cursor-pointer"
+            className="flex items-center text-left focus:outline-none cursor-pointer"
             aria-label="Accueil Diame Diallo"
           >
             <img
-        src="/logodiame.jpeg"
-        alt="Logo Agence Immobilière Diame Diallo"
-       className="h-12 w-auto object-contain"
-      />
+              src="/logodiame.png"
+              alt="Logo Agence Immobilière Diame Diallo"
+              className="h-14 w-auto object-contain block"
+            />
           </button>
 
-          {/* Desktop Navigation Links */}
+          {/* Navigation pour ordinateur */}
           <nav className="hidden lg:flex items-center space-x-7">
             {navItems.map((item) => (
               <button
@@ -87,18 +96,23 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }`}
               >
                 {item.label}
+
                 {activeSection === item.id && (
                   <motion.span
                     layoutId="activeNavIndicator"
                     className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#d97706] rounded-full"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 380,
+                      damping: 30,
+                    }}
                   />
                 )}
               </button>
             ))}
           </nav>
 
-          {/* Desktop Right CTAs */}
+          {/* Boutons pour ordinateur */}
           <div className="hidden lg:flex items-center space-x-3">
             <motion.button
               whileHover={{ scale: 1.03 }}
@@ -110,6 +124,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <FaWhatsapp className="w-4 h-4" />
               <span>WhatsApp Direct</span>
             </motion.button>
+
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
@@ -122,7 +137,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </motion.button>
           </div>
 
-          {/* Mobile Menu Button (Hamburger as in Image 1) */}
+          {/* Boutons pour mobile */}
           <div className="flex lg:hidden items-center space-x-2">
             <button
               id="nav-whatsapp-mobile-btn"
@@ -132,19 +147,25 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <FaWhatsapp className="w-5 h-5" />
             </button>
+
             <button
               id="mobile-menu-toggle-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 text-[#00152a] hover:bg-neutral-100 rounded-[4px] transition-colors focus:outline-none cursor-pointer"
-              aria-label="Menu"
+              aria-label={mobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Menu mobile */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -165,21 +186,25 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={(e) => e.stopPropagation()}
             >
               <div>
+                {/* En-tête du menu mobile */}
                 <div className="flex items-center justify-between pb-5 border-b border-[#e7e2d9]">
-                 <img
-             src="/logodiame.jpeg"
-             alt="Logo Agence Immobilière Diame Diallo"
-              className="h-9 w-auto object-contain"
-           />
+                  <img
+                    src="/logodiame.png"
+                    alt="Logo Agence Immobilière Diame Diallo"
+                    className="h-10 w-auto object-contain block"
+                  />
+
                   <button
                     id="close-drawer-btn"
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-1 text-gray-500 hover:text-black rounded cursor-pointer"
+                    aria-label="Fermer le menu"
                   >
                     <X className="w-5 h-5" />
                   </button>
                 </div>
 
+                {/* Liens du menu */}
                 <div className="py-4 space-y-1">
                   {navItems.map((item) => (
                     <button
@@ -197,11 +222,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                   ))}
                 </div>
 
+                {/* Informations de l'agence */}
                 <div className="mt-4 pt-4 border-t border-[#e7e2d9] space-y-2">
                   <div className="flex items-center gap-2 text-xs text-[#43474d] px-3">
                     <MapPin className="w-3.5 h-3.5 text-[#d97706]" />
                     <span>Rue de Colobane, Dakar</span>
                   </div>
+
                   <div className="flex items-center gap-2 text-xs text-[#43474d] px-3">
                     <ShieldCheck className="w-3.5 h-3.5 text-[#d97706]" />
                     <span>Agence Agréée SUARL</span>
@@ -209,6 +236,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
               </div>
 
+              {/* Boutons du bas */}
               <div className="space-y-2 pt-6 border-t border-[#e7e2d9]">
                 <button
                   id="drawer-whatsapp-btn"
@@ -218,6 +246,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <FaWhatsapp className="w-5 h-5" />
                   <span>Contacter sur WhatsApp</span>
                 </button>
+
                 <button
                   id="drawer-phone-btn"
                   onClick={() => handleNavClick('contact')}

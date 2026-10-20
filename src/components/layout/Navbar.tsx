@@ -77,7 +77,7 @@ export const Navbar: React.FC = () => {
             {/* Logo agrandi */}
             <Link to="/" aria-label="Accueil : Agence Immobilière D.DIALLO" className="flex-shrink-0 flex items-center">
               <img
-  src="/logodiame.jpeg"
+  src="/logodiame.png"
   alt="Agence Immobilière Diame Diallo SUARL"
   className={`w-auto object-contain transition-all duration-300 ${
     isScrolled ? 'h-12 sm:h-14' : 'h-16 sm:h-20'
@@ -222,7 +222,7 @@ export const Navbar: React.FC = () => {
         {/* Drawer Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-[#F5F6F8]">
           <img
-  src="/logodiame.jpeg"
+  src="/logodiame.png"
   alt="Agence Immobilière Diame Diallo SUARL"
   className="h-12 w-auto object-contain"
 />
