@@ -5,7 +5,7 @@ import { Layout } from '../components/layout/Layout';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { ARTICLES_DATA, AGENCY_CONFIG } from '../data';
 import { buildWhatsAppLink } from '../utils/whatsapp';
-
+import { FaWhatsapp } from 'react-icons/fa';
 export const ConseilDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const article = ARTICLES_DATA.find((a) => a.slug === slug) || ARTICLES_DATA[0];
@@ -109,7 +109,7 @@ export const ConseilDetailPage: React.FC = () => {
             rel="noopener noreferrer"
             className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#1DB954] text-white text-xs font-bold uppercase tracking-wider transition-all"
           >
-            <MessageSquare className="w-4 h-4 fill-current" />
+            <FaWhatsapp className="w-5 h-5" />
             Poser une question
           </a>
         </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MapPin, Phone, Mail, MessageSquare, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 import { AGENCY_INFO } from '../data/properties';
 import { ContactFormData } from '../types';
+import { FaWhatsapp } from 'react-icons/fa';
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -115,7 +116,7 @@ export const ContactSection: React.FC = () => {
                 onClick={handleWhatsAppDirect}
                 className="w-full flex items-center justify-center gap-2.5 py-3.5 px-6 bg-[#25D366] hover:bg-[#20ba59] text-white font-['Manrope'] font-bold text-sm rounded-[4px] shadow-md transition-all active:scale-[0.99]"
               >
-                <MessageSquare className="w-5 h-5 fill-current" />
+                <FaWhatsapp className="w-5 h-5" />
                 <span>Discuter sur WhatsApp</span>
               </button>
             </div>

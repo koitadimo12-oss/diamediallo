@@ -2,10 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link } from 'react-router-dom';
-import { MessageSquare, Phone, Mail, MapPin, ArrowRight, Send } from 'lucide-react';
+import { Phone, Mail, MapPin, ArrowRight, Send } from 'lucide-react';
 import { AGENCY_CONFIG } from '../../data';
 import { buildWhatsAppLink, buildGeneralContactMessage } from '../../utils/whatsapp';
-
+import { FaWhatsapp } from 'react-icons/fa';
 gsap.registerPlugin(ScrollTrigger);
 
 export const ContactSection: React.FC = () => {
@@ -69,7 +69,7 @@ export const ContactSection: React.FC = () => {
                 className="flex items-center gap-4 p-4 rounded-xl bg-[#F5F6F8] hover:bg-[#25D366]/10 border border-transparent hover:border-[#25D366]/30 transition-all group"
               >
                 <div className="w-11 h-11 rounded-xl bg-[#25D366] flex items-center justify-center flex-shrink-0">
-                  <MessageSquare className="w-5 h-5 fill-white text-white" />
+                  <FaWhatsapp className="w-5 h-5" />
                 </div>
                 <div>
                   <p className="text-xs font-bold uppercase tracking-wider text-[#334155] mb-0.5">WhatsApp</p>

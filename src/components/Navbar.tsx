@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Phone, MessageSquare, Building2, Calculator, ShieldCheck, MapPin } from 'lucide-react';
 import { Logo } from './Logo';
 import { AGENCY_INFO } from '../data/properties';
-
+import { FaWhatsapp } from 'react-icons/fa';
 interface NavbarProps {
   onNavigate: (sectionId: string) => void;
   activeSection?: string;
@@ -102,7 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={openWhatsApp}
               className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-[4px] bg-[#25D366] text-white hover:bg-[#20ba59] transition-colors shadow-sm cursor-pointer"
             >
-              <MessageSquare className="w-3.5 h-3.5 fill-current" />
+             <FaWhatsapp className="w-5 h-5" />
               <span>WhatsApp Direct</span>
             </motion.button>
             <motion.button

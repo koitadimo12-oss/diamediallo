@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Calculator, MessageSquare } from 'lucide-react';
 import { AGENCY_CONFIG } from '../data';
-
+import { FaWhatsapp } from 'react-icons/fa';
 export const MortgageCalculator: React.FC = () => {
   const [propertyPrice, setPropertyPrice] = useState<number>(35000000); // 35M FCFA default
   const [downPaymentPercent, setDownPaymentPercent] = useState<number>(20); // 20%
@@ -210,7 +210,7 @@ export const MortgageCalculator: React.FC = () => {
                 onClick={handleConsultLoan}
                 className="w-full flex items-center justify-center gap-2 py-3.5 px-4 bg-[#25D366] hover:bg-[#20ba59] text-white font-['Manrope'] font-bold text-xs sm:text-sm rounded-[4px] shadow-md transition-colors cursor-pointer"
               >
-                <MessageSquare className="w-4 h-4 fill-current" />
+                <FaWhatsapp className="w-5 h-5" />
                 <span>Étudier ce dossier avec nous (WhatsApp)</span>
               </motion.button>
             </div>

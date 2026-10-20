@@ -15,6 +15,7 @@ import {
   ChevronRight,
   ShieldCheck,
 } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import { Property } from '../types';
 import { AGENCY_INFO, FALLBACK_PROPERTY_IMAGE } from '../data/properties';
 
@@ -250,7 +251,7 @@ export const PropertyDetailModal: React.FC<PropertyDetailModalProps> = ({ proper
             onClick={handleWhatsAppContact}
             className="w-full sm:flex-1 flex items-center justify-center gap-2 py-3.5 px-4 bg-[#25D366] hover:bg-[#20ba59] text-white font-['Manrope'] font-bold text-sm rounded-[4px] shadow-sm transition-all active:scale-[0.98]"
           >
-            <MessageSquare className="w-4 h-4 fill-current" />
+            <FaWhatsapp className="w-5 h-5" />
             <span>Demander une visite sur WhatsApp</span>
           </button>
           

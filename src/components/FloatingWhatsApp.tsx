@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { MessageSquare, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { AGENCY_CONFIG } from '../data';
 import { buildWhatsAppLink, buildGeneralContactMessage } from '../utils/whatsapp';
-
+import { FaWhatsapp } from 'react-icons/fa';
 export const FloatingWhatsApp: React.FC = () => {
   const [dismissed, setDismissed] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
@@ -44,7 +44,7 @@ export const FloatingWhatsApp: React.FC = () => {
       >
         {/* Pulse ring */}
         <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30 group-hover:opacity-0" />
-        <MessageSquare className="w-7 h-7 fill-white text-white relative z-10" />
+       <FaWhatsapp className="w-5 h-5" />
       </a>
     </div>
   );

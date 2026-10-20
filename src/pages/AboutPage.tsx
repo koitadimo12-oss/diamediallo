@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle2, Quote, MessageSquare, ArrowRight, Award, ShieldCheck, Users, MapPin } from 'lucide-react';
+import { CheckCircle2, Quote,ArrowRight, Award, ShieldCheck, Users, MapPin } from 'lucide-react';
 import { Layout } from '../components/layout/Layout';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { AGENCY_CONFIG, DIRECTRICE_MESSAGE } from '../data';
 import { buildWhatsAppLink, buildGeneralContactMessage } from '../utils/whatsapp';
-
+import { FaWhatsapp } from 'react-icons/fa';
 import { StatsSection } from '../components/sections/StatsSection';
 
 const DIAME_PHOTO = '/diame.jpeg';
@@ -152,7 +152,7 @@ export const AboutPage: React.FC = () => {
             <p className="text-white/70 mb-7 max-w-md mx-auto text-sm">Contactez-nous dès aujourd'hui pour un premier entretien sans engagement.</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a href={waHref} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-[#25D366] hover:bg-[#1DB954] text-white font-bold rounded-xl transition-colors">
-                <MessageSquare className="w-4 h-4 fill-current" /> WhatsApp
+                <FaWhatsapp className="w-5 h-5" />WhatsApp
               </a>
               <Link to="/contact" className="flex items-center gap-2 px-6 py-3 bg-[#C8A96B] hover:bg-[#b8995b] text-[#10243A] font-bold rounded-xl transition-colors">
                 Nous contacter <ArrowRight className="w-4 h-4" />

@@ -1,8 +1,8 @@
 import React from 'react';
-import { MessageSquare, ShieldCheck, HeartHandshake, CheckCircle2 } from 'lucide-react';
+import {  ShieldCheck, HeartHandshake, CheckCircle2 } from 'lucide-react';
 import { AGENCY_CONFIG } from '../../data';
 import { buildWhatsAppLink } from '../../utils/whatsapp';
-
+import { FaWhatsapp } from 'react-icons/fa';
 export const TestimonialsSection: React.FC = () => {
   const waReviewLink = buildWhatsAppLink(
     "Bonjour Agence Immobilière D.DIALLO, j'ai réalisé un projet avec votre agence et je souhaite vous partager mon témoignage d'expérience."
@@ -51,7 +51,7 @@ export const TestimonialsSection: React.FC = () => {
             rel="noopener noreferrer"
             className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#10243A] hover:bg-[#1a3550] text-white text-xs font-bold uppercase tracking-wider transition-all"
           >
-            <MessageSquare className="w-4 h-4 text-emerald-400" />
+            <FaWhatsapp className="w-5 h-5" />
             Partager mon retour
           </a>
         </div>

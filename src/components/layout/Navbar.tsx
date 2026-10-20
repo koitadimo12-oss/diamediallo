@@ -4,7 +4,7 @@ import { Menu, X, Phone, MessageSquare, ChevronDown } from 'lucide-react';
 import { Logo } from '../ui/Logo';
 import { AGENCY_CONFIG } from '../../data';
 import { buildWhatsAppLink, buildGeneralContactMessage } from '../../utils/whatsapp';
-
+import { FaWhatsapp } from 'react-icons/fa';
 const NAV_LINKS = [
   { label: 'Accueil', path: '/' },
   { label: 'Nos Biens', path: '/biens' },
@@ -149,7 +149,7 @@ export const Navbar: React.FC = () => {
                 className="flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-lg bg-[#25D366] text-white hover:bg-[#1DB954] transition-colors shadow-sm"
                 aria-label="Contacter sur WhatsApp"
               >
-                <MessageSquare className="w-3.5 h-3.5 fill-current" />
+                <FaWhatsapp className="w-5 h-5" />
                 WhatsApp
               </a>
               <a
@@ -172,7 +172,7 @@ export const Navbar: React.FC = () => {
                 className="p-2 bg-[#25D366] text-white rounded-lg"
                 aria-label="WhatsApp"
               >
-                <MessageSquare className="w-4 h-4 fill-current" />
+                <FaWhatsapp className="w-5 h-5" />
               </a>
               <button
                 id="mobile-menu-toggle"
@@ -266,7 +266,7 @@ export const Navbar: React.FC = () => {
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 w-full py-3 bg-[#25D366] text-white text-sm font-bold rounded-xl"
           >
-            <MessageSquare className="w-4 h-4 fill-current" />
+            <FaWhatsapp className="w-5 h-5" />
             Contacter sur WhatsApp
           </a>
           <a

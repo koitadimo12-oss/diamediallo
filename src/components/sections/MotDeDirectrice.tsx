@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Quote, CheckCircle2, ShieldCheck, Award, MessageSquare, MapPin } from 'lucide-react';
 import { DIRECTRICE_MESSAGE, AGENCY_CONFIG } from '../../data';
 import { buildWhatsAppLink } from '../../utils/whatsapp';
-
+import { FaWhatsapp } from 'react-icons/fa';
 gsap.registerPlugin(ScrollTrigger);
 
 const DIAME_PHOTO = '/diame.jpeg';
@@ -223,7 +223,7 @@ export const MotDeDirectrice: React.FC = () => {
                   id="mot-direct-chat-btn"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#1DB954] text-white font-bold text-xs uppercase tracking-wider shadow-lg transition-all cursor-pointer"
                 >
-                  <MessageSquare className="w-3.5 h-3.5 fill-current" />
+                  <FaWhatsapp className="w-5 h-5" />
                   Échanger sur WhatsApp
                 </a>
               </div>

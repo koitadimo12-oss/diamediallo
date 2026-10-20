@@ -2,12 +2,12 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Logo } from './Logo';
 import { AGENCY_INFO } from '../data/properties';
+import { FaWhatsapp } from 'react-icons/fa';
 import {
   MapPin,
   Phone,
   Mail,
   ArrowUp,
-  MessageSquare,
   ShieldCheck,
   Building2,
   Clock,
@@ -60,7 +60,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 onClick={handleWhatsAppContact}
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-[4px] bg-[#25D366] hover:bg-[#20ba59] text-white font-['Manrope'] font-bold text-sm shadow-md transition-colors cursor-pointer"
               >
-                <MessageSquare className="w-4 h-4 fill-current" />
+                <FaWhatsapp className="w-5 h-5" />
                 <span>WhatsApp : 77 526 41 07</span>
               </motion.button>
               
@@ -231,7 +231,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </div>
 
               <div className="flex items-center gap-2.5">
-                <MessageSquare className="w-4 h-4 text-[#25D366] flex-shrink-0" />
+               <FaWhatsapp className="w-5 h-5" />
                 <button onClick={handleWhatsAppContact} className="hover:text-green-400 transition-colors text-left">
                   WhatsApp : 77 526 41 07
                 </button>
