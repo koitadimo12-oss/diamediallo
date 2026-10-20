@@ -3,10 +3,9 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, ArrowRight, Send } from 'lucide-react';
-import { FaWhatsapp } from 'react-icons/fa';
 import { AGENCY_CONFIG } from '../../data';
 import { buildWhatsAppLink, buildGeneralContactMessage } from '../../utils/whatsapp';
-
+import { FaWhatsapp } from 'react-icons/fa';
 gsap.registerPlugin(ScrollTrigger);
 
 export const ContactSection: React.FC = () => {
@@ -46,13 +45,13 @@ export const ContactSection: React.FC = () => {
 
           {/* Left: Info */}
           <div className="contact-col">
-            <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#C8A96B] mb-4">
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#8a6a2a] mb-4">
               Prendre contact
             </span>
             <h2
               id="contact-home-heading"
               className="text-3xl sm:text-4xl md:text-5xl font-black text-[#10243A] leading-tight mb-6"
-              style={{ fontFamily: 'Georgia, serif' }}
+             
             >
               Parlons de votre projet
             </h2>
@@ -61,34 +60,24 @@ export const ContactSection: React.FC = () => {
             </p>
 
             <div className="space-y-5">
-              
-              
-          {/* WhatsApp */}
-          <a
-            href={buildWhatsAppLink(buildGeneralContactMessage())}
-            target="_blank"
-            rel="noopener noreferrer"
-            id="contact-home-whatsapp"
-            className="flex items-center gap-4 p-4 rounded-xl bg-[#F5F6F8] hover:bg-[#25D366]/10 border border-transparent hover:border-[#25D366]/30 transition-all group"
-          >
-            <div className="w-11 h-11 rounded-xl bg-[#25D366] flex items-center justify-center flex-shrink-0">
-              <FaWhatsapp className="w-6 h-6 text-white" />
-            </div>
-
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-[#334155] mb-0.5">
-                WhatsApp
-              </p>
-              <p className="text-[#10243A] font-bold text-sm">
-                {AGENCY_CONFIG.whatsappDisplay}
-              </p>
-              <p className="text-[#334155] text-xs">
-                Réponse rapide, disponible 7j/7
-              </p>
-            </div>
-
-            <ArrowRight className="w-4 h-4 text-[#C8A96B] ml-auto group-hover:translate-x-1 transition-transform" />
-          </a>
+              {/* WhatsApp */}
+              <a
+                href={buildWhatsAppLink(buildGeneralContactMessage())}
+                target="_blank"
+                rel="noopener noreferrer"
+                id="contact-home-whatsapp"
+                className="flex items-center gap-4 p-4 rounded-xl bg-[#F5F6F8] hover:bg-[#25D366]/10 border border-transparent hover:border-[#25D366]/30 transition-all group"
+              >
+                <div className="w-11 h-11 rounded-xl bg-[#25D366] flex items-center justify-center flex-shrink-0">
+                  <FaWhatsapp className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#334155] mb-0.5">WhatsApp</p>
+                  <p className="text-[#10243A] font-bold text-sm">{AGENCY_CONFIG.whatsappDisplay}</p>
+                  <p className="text-[#334155] text-xs">Réponse rapide, disponible 7j/7</p>
+                </div>
+                <ArrowRight className="w-4 h-4 text-[#C8A96B] ml-auto group-hover:translate-x-1 transition-transform" />
+              </a>
 
               {/* Phone */}
               <a
@@ -159,7 +148,7 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <h3
                   className="text-2xl sm:text-3xl font-black text-white mb-4 leading-tight"
-                  style={{ fontFamily: 'Georgia, serif' }}
+                 
                 >
                   Formulaire de contact complet
                 </h3>

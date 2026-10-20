@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, ArrowRight, CheckCircle2, ShieldAlert, Sparkles, Filter } from 'lucide-react';
 import { Layout } from '../components/layout/Layout';
+import { PageHeader } from '../components/ui/PageHeader';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { ARTICLES_DATA, AGENCY_CONFIG } from '../data';
 
@@ -21,24 +22,12 @@ export const ConseilsPage: React.FC = () => {
 
   return (
     <Layout>
-      {/* Hero Header */}
-      <div className="relative py-20 md:py-28 bg-[#10243A] overflow-hidden text-white">
-        <div
-          className="absolute inset-0 opacity-10 pointer-events-none"
-          style={{ backgroundImage: `radial-gradient(circle, #C8A96B 1px, transparent 1px)`, backgroundSize: '28px 28px' }}
-        />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#C8A96B] mb-3">
-            Pédagogie & Prévention Foncière
-          </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-4" style={{ fontFamily: 'Georgia, serif' }}>
-            Les Conseils de Votre Partenaire Immobilier
-          </h1>
-          <p className="text-white/75 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            Comprendre les règles du jeu foncier au Sénégal est la première étape pour réussir et sécuriser votre investissement immobilier à Dakar et sur l'ensemble du territoire.
-          </p>
-        </div>
-      </div>
+      <PageHeader
+        kicker="Pédagogie & prévention foncière"
+        title="Les conseils de votre partenaire immobilier"
+        subtitle="Comprendre les règles du jeu foncier au Sénégal est la première étape pour sécuriser votre investissement à Dakar et sur l'ensemble du territoire."
+        crumbs={[{ label: 'Accueil', path: '/' }, { label: 'Conseils' }]}
+      />
 
       {/* Filter Tabs & Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">

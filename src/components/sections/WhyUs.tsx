@@ -96,13 +96,13 @@ export const WhyUs: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="whyus-heading text-center mb-14">
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#C8A96B] mb-3">
+          <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#8a6a2a] mb-3">
             Notre différence
           </span>
           <h2
             id="whyus-heading"
             className="text-3xl sm:text-4xl md:text-5xl font-black text-[#10243A] leading-tight"
-            style={{ fontFamily: 'Georgia, serif' }}
+           
           >
             Pourquoi nous choisir ?
           </h2>

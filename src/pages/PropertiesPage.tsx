@@ -3,6 +3,7 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { Search, X, Bed, Bath, Maximize2, MapPin, ArrowRight } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { Layout } from '../components/layout/Layout';
+import { PageHeader } from '../components/ui/PageHeader';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { DEMO_PROPERTIES, FALLBACK_IMAGE, AGENCY_CONFIG } from '../data';
 import { Property, PropertyType, TransactionType } from '../types';
@@ -130,28 +131,15 @@ export const PropertiesPage: React.FC = () => {
 
   return (
     <Layout>
-      {/* Hero */}
-      <div
-        className="relative py-16 md:py-24 bg-[#10243A] text-white overflow-hidden"
-        role="banner"
-      >
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: `radial-gradient(circle, #C8A96B 1px, transparent 1px)`, backgroundSize: '30px 30px' }}
-        />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#C8A96B] mb-4">Nos annonces</span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-4" style={{ fontFamily: 'Georgia, serif' }}>
-            Biens Immobiliers au Sénégal
-          </h1>
-          <p className="text-white/70 text-sm sm:text-base max-w-xl mx-auto">
-            Sélection de démonstration — contactez-nous pour les biens réellement disponibles.
-          </p>
-        </div>
-      </div>
+      <PageHeader
+        kicker="Nos annonces"
+        title="Biens immobiliers au Sénégal"
+        subtitle="Sélection de démonstration — contactez-nous pour les biens réellement disponibles."
+        crumbs={[{ label: 'Accueil', path: '/' }, { label: 'Nos biens' }]}
+      />
 
       {/* Filters Bar */}
-      <div className="sticky top-[72px] z-30 bg-white border-b border-[#F5F6F8] shadow-sm">
+      <div className="sticky top-[var(--nav-h)] z-30 bg-[#faf7f1] border-b border-[#e4dccb]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-3 flex-wrap">
           {/* Search */}
           <div className="relative flex-1 min-w-[180px]">

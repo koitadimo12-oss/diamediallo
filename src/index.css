@@ -1,1 +1,56 @@
 @import "tailwindcss";
+
+:root {
+  --navy: #10243a;
+  --ink: #243041;
+  --muted: #5c6570;
+  --gold: #b08a3c;
+  --paper: #faf7f1;
+  --sand: #f4f0e6;
+  --nav-h: 4.5rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: Manrope, "Work Sans", ui-sans-serif, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+::selection {
+  background: #ead9a8;
+  color: #10243a;
+}
+
+details > summary {
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}

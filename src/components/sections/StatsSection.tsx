@@ -24,7 +24,7 @@ export const StatsSection: React.FC = () => {
           <h2
             id="experience-heading"
             className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight mb-4"
-            style={{ fontFamily: 'Georgia, serif' }}
+           
           >
             {AGENCY_CONFIG.experienceHeadline}
           </h2>
@@ -43,7 +43,7 @@ export const StatsSection: React.FC = () => {
                 <Award className="w-6 h-6" />
               </div>
               <div className="flex items-baseline gap-2 mb-1">
-                <span className="text-3xl font-black text-amber-400" style={{ fontFamily: 'Georgia, serif' }}>
+                <span className="text-3xl font-black text-amber-400">
                   {AGENCY_CONFIG.history.experienceIndicator}
                 </span>
               </div>
@@ -64,7 +64,7 @@ export const StatsSection: React.FC = () => {
               <div className="w-12 h-12 rounded-xl bg-amber-400/20 text-amber-400 flex items-center justify-center mb-4">
                 <MapPin className="w-6 h-6" />
               </div>
-              <div className="text-2xl font-black text-white mb-1" style={{ fontFamily: 'Georgia, serif' }}>
+              <div className="text-2xl font-black text-white mb-1">
                 Colobane
               </div>
               <h3 className="text-base font-bold text-white mb-2">Implantation locale forte</h3>
@@ -84,7 +84,7 @@ export const StatsSection: React.FC = () => {
               <div className="w-12 h-12 rounded-xl bg-amber-400/20 text-amber-400 flex items-center justify-center mb-4">
                 <ShieldCheck className="w-6 h-6" />
               </div>
-              <div className="text-2xl font-black text-white mb-1" style={{ fontFamily: 'Georgia, serif' }}>
+              <div className="text-2xl font-black text-white mb-1">
                 Pédagogie
               </div>
               <h3 className="text-base font-bold text-white mb-2">Vérifications foncières</h3>
@@ -104,7 +104,7 @@ export const StatsSection: React.FC = () => {
               <div className="w-12 h-12 rounded-xl bg-amber-400/20 text-amber-400 flex items-center justify-center mb-4">
                 <Clock className="w-6 h-6" />
               </div>
-              <div className="text-2xl font-black text-white mb-1" style={{ fontFamily: 'Georgia, serif' }}>
+              <div className="text-2xl font-black text-white mb-1">
                 7j / 7
               </div>
               <h3 className="text-base font-bold text-white mb-2">Horaires élargis</h3>

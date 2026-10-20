@@ -1,20 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Phone,
-  Mail,
-  MapPin,
-  Facebook,
-  Instagram,
-  Linkedin,
-  ChevronRight,
+  Phone, Mail, MapPin, Facebook, Instagram, Linkedin, ChevronRight
 } from 'lucide-react';
-
-import { FaWhatsapp } from 'react-icons/fa';
 import { Logo } from '../ui/Logo';
 import { AGENCY_CONFIG } from '../../data';
 import { buildWhatsAppLink, buildGeneralContactMessage } from '../../utils/whatsapp';
-
+import { FaWhatsapp } from 'react-icons/fa';
 const footerLinks = {
   services: [
     { label: 'Achat & vente de terrains', path: '/services/terrains' },
@@ -29,11 +21,11 @@ const footerLinks = {
     { label: 'Vidéos & Pédagogie', path: '/videos' },
     { label: 'À Propos', path: '/a-propos' },
     { label: 'Contact', path: '/contact' },
+    { label: 'FAQ', path: '/#faq' },
   ],
   legal: [
     { label: 'Mentions légales', path: '/mentions-legales' },
     { label: 'Politique de confidentialité', path: '/confidentialite' },
-    { label: "Conditions d'utilisation & Barème", path: '/conditions' },
   ],
 };
 
@@ -47,7 +39,7 @@ export const Footer: React.FC = () => {
       <div className="border-b border-white/10 bg-[#C8A96B]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <h2 className="text-2xl font-bold text-white" style={{ fontFamily: 'Georgia, serif' }}>
+            <h2 className="text-2xl font-bold text-white">
               Votre projet immobilier commence ici
             </h2>
             <p className="text-[#C8A96B] mt-1 text-sm">
@@ -62,7 +54,7 @@ export const Footer: React.FC = () => {
               id="footer-whatsapp-btn"
               className="flex items-center gap-2 px-5 py-3 bg-[#25D366] hover:bg-[#1DB954] text-white text-sm font-bold rounded-xl transition-colors"
             >
-              <FaWhatsapp className="w-5 h-5" />
+             <FaWhatsapp className="w-5 h-5" />
               WhatsApp Direct
             </a>
             <Link
@@ -83,7 +75,7 @@ export const Footer: React.FC = () => {
 
           {/* Column 1: Brand */}
           <div className="lg:col-span-1">
-            <Logo variant="full" dark size="lg" />
+            <Logo variant="full" dark />
             <p className="mt-5 text-sm text-white/60 leading-relaxed max-w-xs">
               {AGENCY_CONFIG.tagline}
             </p>
@@ -173,7 +165,7 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <FaWhatsapp className="w-4 h-4 text-[#25D366] flex-shrink-0" />
+               <FaWhatsapp className="w-5 h-5" />
                 <a href={whatsapp} target="_blank" rel="noopener noreferrer" className="text-sm text-[#25D366] hover:text-[#1DB954] font-semibold transition-colors">
                   {AGENCY_CONFIG.whatsappDisplay}
                 </a>

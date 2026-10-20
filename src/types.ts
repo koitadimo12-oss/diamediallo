@@ -94,6 +94,11 @@ export interface VideoItem {
   isPendingValidation?: boolean;
 }
 
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
 // ─── SEO Meta ─────────────────────────────────────────────────────────────────
 export interface PageMeta {
   title: string;

@@ -35,9 +35,7 @@ export const Hero: React.FC = () => {
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-      // Overlay fade out
-      tl.fromTo(overlayRef.current, { opacity: 1 }, { opacity: 0.55, duration: 1.2 })
-        .fromTo(badgeRef.current, { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.8')
+      tl.fromTo(badgeRef.current, { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: 0.6 })
         .fromTo(titleRef.current, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8 }, '-=0.4')
         .fromTo(subtitleRef.current, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.5')
         .fromTo(ctaRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.4')
@@ -102,7 +100,7 @@ export const Hero: React.FC = () => {
         className="absolute inset-0 z-10"
         style={{
           background:
-            'linear-gradient(to bottom, rgba(16,36,58,0.75) 0%, rgba(16,36,58,0.5) 50%, rgba(16,36,58,0.85) 100%)',
+            'linear-gradient(to bottom, rgba(16,36,58,0.72) 0%, rgba(16,36,58,0.58) 42%, rgba(16,36,58,0.78) 100%)',
         }}
       />
 
@@ -127,7 +125,7 @@ export const Hero: React.FC = () => {
           ref={titleRef}
           id="hero-title"
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.12] tracking-tight mb-6 max-w-4xl"
-          style={{ fontFamily: 'Georgia, serif' }}
+         
         >
           Votre projet immobilier au Sénégal{' '}
           <span className="text-[#C8A96B] relative inline-block">

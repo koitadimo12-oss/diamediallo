@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, ChevronDown } from 'lucide-react';
-import { FaWhatsapp } from 'react-icons/fa';
-
+import { Logo } from '../ui/Logo';
 import { AGENCY_CONFIG } from '../../data';
 import { buildWhatsAppLink, buildGeneralContactMessage } from '../../utils/whatsapp';
-
+import { FaWhatsapp } from 'react-icons/fa';
 const NAV_LINKS = [
   { label: 'Accueil', path: '/' },
   { label: 'Nos Biens', path: '/biens' },
@@ -66,26 +65,15 @@ export const Navbar: React.FC = () => {
         role="banner"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'bg-white/98 backdrop-blur-xl shadow-lg shadow-[#10243A]/10 border-b border-[#C8A96B]/25 py-1.5'
-            : 'bg-white/95 backdrop-blur-md border-b border-black/5 py-3 sm:py-4'
+            ? 'bg-[#faf7f1]/97 backdrop-blur-xl shadow-sm border-b border-[#e4dccb]'
+            : 'bg-[#faf7f1]/92 backdrop-blur-md border-b border-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`flex items-center justify-between transition-all duration-300 ${
-            isScrolled ? 'h-16 sm:h-18' : 'h-20 sm:h-24'
-          }`}>
-            {/* Logo agrandi */}
-            <Link to="/" aria-label="Accueil : Agence Immobilière D.DIALLO" className="flex-shrink-0 flex items-center">
-              <img
-  src="/logodiame.png"
-  alt="Agence Immobilière Diame Diallo SUARL"
-  className={`w-auto object-contain transition-all duration-300 ${
-    isScrolled ? 'h-12 sm:h-14' : 'h-16 sm:h-20'
-  }`}
-  onError={(e) => {
-    console.error('Impossible de charger le logo :', e.currentTarget.src);
-  }}
-/>
+          <div className="flex items-center justify-between min-h-[var(--nav-h)] py-2">
+            {/* Logo */}
+            <Link to="/" aria-label="Accueil – Agence Immobilière Diame Diallo" className="flex-shrink-0">
+              <Logo variant="compact" />
             </Link>
 
             {/* Desktop Nav */}
@@ -161,7 +149,7 @@ export const Navbar: React.FC = () => {
                 className="flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-lg bg-[#25D366] text-white hover:bg-[#1DB954] transition-colors shadow-sm"
                 aria-label="Contacter sur WhatsApp"
               >
-                <FaWhatsapp className="w-4 h-4" />
+                <FaWhatsapp className="w-5 h-5" />
                 WhatsApp
               </a>
               <a
@@ -221,11 +209,7 @@ export const Navbar: React.FC = () => {
       >
         {/* Drawer Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-[#F5F6F8]">
-          <img
-  src="/logodiame.png"
-  alt="Agence Immobilière Diame Diallo SUARL"
-  className="h-12 w-auto object-contain"
-/>
+          <Logo variant="compact" />
           <button
             id="mobile-drawer-close"
             onClick={() => setMobileOpen(false)}

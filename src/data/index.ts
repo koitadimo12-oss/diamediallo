@@ -1,4 +1,4 @@
-import { Property, ServiceItem, ArticleItem, VideoItem } from '../types';
+import { Property, ServiceItem, ArticleItem, VideoItem, FaqItem } from '../types';
 
 // ────────────────────────────────────────────────────────────────────────────
 // AGENCY CONFIGURATION — à renseigner avant mise en production
@@ -492,6 +492,38 @@ export const VIDEOS_DATA: VideoItem[] = [
     youtubeUrl: 'https://www.youtube.com/watch?v=C43qUc8Zqvw',
     isPendingValidation: false,
   },
- 
+  
+];
+
+export const FAQ_DATA: FaqItem[] = [
+  {
+    question: 'Comment se passe l’achat d’un terrain à Dakar ?',
+    answer:
+      'Nous identifions des parcelles correspondant à votre budget et à votre usage, collectons les informations disponibles, puis vous orientons vers les vérifications foncières (cadastre, notaire) avant toute signature.',
+  },
+  {
+    question: 'Quelle est la différence entre titre foncier, bail et délibération ?',
+    answer:
+      'Le titre foncier est le droit de propriété le plus sécurisé. Le bail (souvent de longue durée) et la délibération relèvent d’autres régimes. Nous expliquons ces distinctions et recommandons toujours un audit notarial.',
+  },
+  {
+    question: 'Puis-je investir depuis l’étranger (diaspora) ?',
+    answer:
+      'Oui. Nous assurons un suivi à distance : visites filmées, reporting, gestion locative et orientation administrative, avec une communication régulière par WhatsApp.',
+  },
+  {
+    question: 'Proposez-vous la gestion locative ?',
+    answer:
+      'Oui. Nous organisons les visites, aidons à sélectionner les locataires, suivons les aspects administratifs et restons le relais de proximité pour les propriétaires, notamment ceux de la diaspora.',
+  },
+  {
+    question: 'Les biens affichés sur le site sont-ils tous disponibles ?',
+    answer:
+      'Une partie des annonces est présentée à titre de démonstration. Contactez-nous pour connaître les biens réellement disponibles au moment de votre projet.',
+  },
+  {
+    question: 'Comment vous joindre rapidement ?',
+    answer: `WhatsApp et téléphone : ${AGENCY_CONFIG.phone}. Bureau à Colobane, angle Rue 41 × Rue 42, Dakar. Horaires : ${AGENCY_CONFIG.hours}.`,
+  },
 ];
 

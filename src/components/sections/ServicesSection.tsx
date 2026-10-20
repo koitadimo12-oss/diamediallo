@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { SERVICES_DATA, AGENCY_CONFIG } from '../../data';
 import { buildWhatsAppLink } from '../../utils/whatsapp';
 import { FaWhatsapp } from 'react-icons/fa';
-
 gsap.registerPlugin(ScrollTrigger);
 
 const ICONS: Record<string, React.ElementType> = {
@@ -20,9 +19,9 @@ const ICONS: Record<string, React.ElementType> = {
 
 const SERVICE_IMAGES: Record<string, string> = {
   terrains: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80',
-  'gestion-locative': 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80',
+  'gestion-locative': '/team.jpg',
   intermediation: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
-  'assistance-fonciere': '/imageservicefonciere.jpg',//c est le nom de l image il est dans le dossier public
+  'assistance-fonciere': '/imageservicefonciere.jpg',
 };
 
 export const ServicesSection: React.FC = () => {
@@ -72,13 +71,13 @@ export const ServicesSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="services-heading text-center mb-14">
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#C8A96B] mb-3">
+          <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#8a6a2a] mb-3">
             Ce que nous faisons
           </span>
           <h2
             id="services-heading"
             className="text-3xl sm:text-4xl md:text-5xl font-black text-[#10243A] leading-tight"
-            style={{ fontFamily: 'Georgia, serif' }}
+           
           >
             Nos Services Immobiliers
           </h2>
@@ -132,7 +131,7 @@ export const ServicesSection: React.FC = () => {
 
                     {/* Prestations bullet list */}
                     <div className="space-y-1.5 mb-5 pt-3 border-t border-slate-100">
-                      <p className="text-[11px] font-bold uppercase tracking-wider text-[#C8A96B] mb-2">
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-[#8a6a2a] mb-2">
                         Prestations clés :
                       </p>
                       {service.benefits.slice(0, 3).map((item, i) => (
@@ -164,7 +163,7 @@ export const ServicesSection: React.FC = () => {
                     className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#25D366]/10 hover:bg-[#25D366] text-[#128C7E] hover:text-white text-xs font-semibold transition-colors"
                     title="Discuter de ce service sur WhatsApp"
                   >
-                    <FaWhatsapp className="w-5 h-5" />
+                   <FaWhatsapp className="w-5 h-5" />
                     <span>WhatsApp</span>
                   </a>
                 </div>

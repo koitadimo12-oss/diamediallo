@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Calculator, } from 'lucide-react';
-import { FaWhatsapp } from 'react-icons/fa';
-import { AGENCY_CONFIG } from '../data';
 
+import { AGENCY_CONFIG } from '../data';
+import { FaWhatsapp } from 'react-icons/fa';
 export const MortgageCalculator: React.FC = () => {
   const [propertyPrice, setPropertyPrice] = useState<number>(35000000); // 35M FCFA default
   const [downPaymentPercent, setDownPaymentPercent] = useState<number>(20); // 20%

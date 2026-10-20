@@ -1,12 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { FaWhatsapp } from 'react-icons/fa';
 import {
   Bed,
   Bath,
   Maximize2,
   MapPin,
   CheckCircle2,
-  MessageSquare,
   Eye,
   SlidersHorizontal,
   FileCheck,
@@ -327,7 +327,7 @@ export const FeaturedProperties: React.FC<FeaturedPropertiesProps> = ({
                         onClick={(e) => handleWhatsAppInterest(prop, e)}
                         className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[#e7f7ed] hover:bg-[#d5f2e0] text-[#126b38] border border-[#a2e4be] rounded-[4px] text-sm font-['Manrope'] font-bold transition-all shadow-sm cursor-pointer"
                       >
-                        <MessageSquare className="w-4 h-4 fill-current text-[#25D366]" />
+                       <FaWhatsapp className="w-5 h-5" />
                         <span>Je suis intéressé</span>
                       </motion.button>
                     </div>

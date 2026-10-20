@@ -1,22 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-import { Quote, CheckCircle2, ShieldCheck, Award, MapPin } from 'lucide-react';
-import { FaWhatsapp } from 'react-icons/fa';
-
-
+import { Quote, CheckCircle2, ShieldCheck, Award, MessageSquare, MapPin } from 'lucide-react';
 import { DIRECTRICE_MESSAGE, AGENCY_CONFIG } from '../../data';
 import { buildWhatsAppLink } from '../../utils/whatsapp';
-
+import { FaWhatsapp } from 'react-icons/fa';
 gsap.registerPlugin(ScrollTrigger);
 
 const DIAME_PHOTO = '/diame.jpeg';
-const DIAME_PHOTO_FALLBACK ='/diame.jpeg';
-  
+const DIAME_PHOTO_FALLBACK =
+  'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80';
 
 const KEY_STRENGTHS = [
-  'Plus de 20 ans de présence continue et d’expérience foncière à Dakar',
+  'Plus de 20 ans de présence continue et de confiance sur Dakar',
   'Sécurisation juridique stricte (Titres Fonciers, Baux et Notaires)',
   'Partenaire privilégié de la diaspora pour investir au Sénégal',
   'Accompagnement transparent et personnalisé du premier contact à la remise des clés',
@@ -110,10 +106,10 @@ export const MotDeDirectrice: React.FC = () => {
                 {/* Gradient overlay for readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a1726] via-[#0a1726]/40 to-transparent" />
 
-                {/* Top Badge: 20+ ans à Dakar */}
+                {/* Top Badge: 10+ ans à Dakar */}
                 <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-amber-400/40 text-amber-300 text-xs font-bold tracking-wide">
                   <Award className="w-3.5 h-3.5 text-amber-400" />
-                  Présent à Dakar depuis plus de 20 ans
+                  Présent à Dakar depuis +20 ans
                 </div>
 
                 {/* Bottom Card Identity */}
@@ -124,7 +120,7 @@ export const MotDeDirectrice: React.FC = () => {
                       {AGENCY_CONFIG.director.role}
                     </p>
                   </div>
-                  <h3 className="text-white text-2xl font-black tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
+                  <h3 className="text-white text-2xl font-black tracking-tight">
                     {AGENCY_CONFIG.director.name}
                   </h3>
                   <p className="text-white/60 text-xs mt-1 flex items-center gap-1.5">
@@ -167,7 +163,7 @@ export const MotDeDirectrice: React.FC = () => {
             <h2
               id="mot-heading"
               className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-6 leading-tight"
-              style={{ fontFamily: 'Georgia, serif' }}
+             
             >
               Votre confiance est notre plus belle réussite
             </h2>
@@ -197,10 +193,7 @@ export const MotDeDirectrice: React.FC = () => {
             {/* Signature & Actions */}
             <div className="mt-10 pt-8 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
               <div>
-                <p
-                  className="text-amber-400 text-2xl font-black tracking-wide"
-                  style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic' }}
-                >
+                <p className="text-amber-400 text-2xl font-bold tracking-wide italic">
                   {DIRECTRICE_MESSAGE.signature}
                 </p>
                 <p className="text-white/50 text-xs mt-1">
@@ -227,8 +220,8 @@ export const MotDeDirectrice: React.FC = () => {
                   id="mot-direct-chat-btn"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#1DB954] text-white font-bold text-xs uppercase tracking-wider shadow-lg transition-all cursor-pointer"
                 >
-                 <FaWhatsapp className="w-4 h-4" />
-                    Échanger sur WhatsApp
+                  <FaWhatsapp className="w-5 h-5" />
+                  Échanger sur WhatsApp
                 </a>
               </div>
             </div>

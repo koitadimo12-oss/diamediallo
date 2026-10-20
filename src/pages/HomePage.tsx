@@ -10,6 +10,7 @@ import { ConseilsSection } from '../components/sections/ConseilsSection';
 import { TestimonialsSection } from '../components/sections/TestimonialsSection';
 import { MortgageCalculator } from '../components/MortgageCalculator';
 import { ContactSection } from '../components/sections/ContactSection';
+import { FaqSection } from '../components/sections/FaqSection';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { AGENCY_CONFIG } from '../data';
 
@@ -50,7 +51,10 @@ export const HomePage: React.FC = () => {
       {/* 10. Simulateur de Financement & Budget */}
       <MortgageCalculator />
 
-      {/* 11. Contact & Localisation Colobane */}
+      {/* 11. Questions fréquentes */}
+      <FaqSection />
+
+      {/* 12. Contact & Localisation Colobane */}
       <ContactSection />
     </Layout>
   );

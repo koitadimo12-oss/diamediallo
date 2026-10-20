@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Home, Search, ArrowLeft, Phone } from 'lucide-react';
+import { Home, Search, Phone } from 'lucide-react';
 import { Layout } from '../components/layout/Layout';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { AGENCY_CONFIG } from '../data';
@@ -14,14 +14,14 @@ export const NotFoundPage: React.FC = () => {
   return (
     <Layout>
       <div className="min-h-[70vh] flex flex-col items-center justify-center px-4 py-20 text-center">
-        <span className="text-6xl sm:text-7xl font-black text-[#10243A]/20 mb-4" style={{ fontFamily: 'Georgia, serif' }}>
+        <span className="text-6xl sm:text-7xl font-bold text-[#10243A]/15 mb-4">
           404
         </span>
-        <h1 className="text-2xl sm:text-3xl font-black text-[#10243A] mb-3" style={{ fontFamily: 'Georgia, serif' }}>
+        <h1 className="text-2xl sm:text-3xl text-[#10243A] mb-3">
           Page non trouvée
         </h1>
-        <p className="text-slate-600 text-sm max-w-md mx-auto mb-8 leading-relaxed">
-          La page que vous tentez d'ouvrir n'existe pas ou a été déplacée. Nous vous invitons à consulter nos annonces ou à revenir à l'accueil.
+        <p className="text-[#5c6570] text-[15px] max-w-md mx-auto mb-8 leading-relaxed">
+          La page que vous tentez d'ouvrir n'existe pas ou a été déplacée. Consultez nos annonces ou revenez à l'accueil.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-3">

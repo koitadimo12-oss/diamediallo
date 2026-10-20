@@ -21,7 +21,7 @@ export const ConseilsSection: React.FC = () => {
             <h2
               id="conseils-heading"
               className="text-3xl sm:text-4xl md:text-5xl font-black text-[#10243A] tracking-tight leading-tight"
-              style={{ fontFamily: 'Georgia, serif' }}
+             
             >
               Les conseils de votre partenaire immobilier
             </h2>
@@ -101,9 +101,15 @@ export const ConseilsSection: React.FC = () => {
               <Youtube className="w-4 h-4 text-red-400" />
               Interviews Vidéos Officielles
             </div>
-            <h3 className="text-2xl sm:text-3xl font-black" style={{ fontFamily: 'Georgia, serif' }}>
-              Interviews de M. Diamé Diallo sur YouTube
-            </h3>
+            <h3
+  className="relative z-10 block w-full text-2xl sm:text-3xl font-black leading-tight text-white opacity-100 visible"
+  style={{
+    color: '#FFFFFF',
+    WebkitTextFillColor: '#FFFFFF',
+  }}
+>
+  Interviews de M. Diamé Diallo sur YouTube
+</h3>
             <p className="text-white/75 text-sm leading-relaxed">
               Retrouvez les explications de M. Diamé Diallo, notamment diffusées sur Manael TV, abordant les formalités administratives, la vérification des titres fonciers et les visites de chantiers à Dakar.
             </p>
