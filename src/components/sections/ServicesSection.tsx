@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Home, TrendingUp, Key, Settings, MapPin, ShieldCheck, ArrowRight, MessageSquare, CheckCircle2 } from 'lucide-react';
+import { Home, TrendingUp, Key, Settings, MapPin, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SERVICES_DATA, AGENCY_CONFIG } from '../../data';
 import { buildWhatsAppLink } from '../../utils/whatsapp';
+import { FaWhatsapp } from 'react-icons/fa';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,7 +22,7 @@ const SERVICE_IMAGES: Record<string, string> = {
   terrains: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80',
   'gestion-locative': 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80',
   intermediation: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
-  'assistance-fonciere': 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80',
+  'assistance-fonciere': '/imageservicefonciere.jpg',//c est le nom de l image il est dans le dossier public
 };
 
 export const ServicesSection: React.FC = () => {
@@ -163,7 +164,7 @@ export const ServicesSection: React.FC = () => {
                     className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#25D366]/10 hover:bg-[#25D366] text-[#128C7E] hover:text-white text-xs font-semibold transition-colors"
                     title="Discuter de ce service sur WhatsApp"
                   >
-                    <MessageSquare className="w-3.5 h-3.5 fill-current" />
+                    <FaWhatsapp className="w-5 h-5" />
                     <span>WhatsApp</span>
                   </a>
                 </div>

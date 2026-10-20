@@ -5,7 +5,7 @@ import { Layout } from '../components/layout/Layout';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { SERVICES_DATA, AGENCY_CONFIG } from '../data';
 import { buildWhatsAppLink } from '../utils/whatsapp';
-
+import { FaWhatsapp } from 'react-icons/fa';
 const ICONS: Record<string, React.ElementType> = {
   Home,
   TrendingUp,
@@ -151,7 +151,7 @@ export const ServicePage: React.FC = () => {
                 id={`service-whatsapp-${service.slug}`}
                 className="w-full flex items-center justify-center gap-2 py-3 bg-[#25D366] hover:bg-[#1DB954] text-white font-bold text-sm rounded-xl transition-colors mb-2.5"
               >
-                <MessageSquare className="w-4 h-4 fill-current" />
+                <FaWhatsapp className="w-5 h-5" />
                 WhatsApp Direct
               </a>
               <a

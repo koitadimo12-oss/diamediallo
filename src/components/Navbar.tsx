@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Phone, MessageSquare, Building2, Calculator, ShieldCheck, MapPin } from 'lucide-react';
+import { Menu, X, Phone, ShieldCheck, MapPin } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import { Logo } from './Logo';
 import { AGENCY_INFO } from '../data/properties';
 
@@ -65,7 +66,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="flex items-center text-left focus:outline-none group cursor-pointer"
             aria-label="Accueil Diame Diallo"
           >
-            <Logo variant="compact" size="md" />
+            <img
+        src="/logodiame.jpeg"
+        alt="Logo Agence Immobilière Diame Diallo"
+       className="h-12 w-auto object-contain"
+      />
           </button>
 
           {/* Desktop Navigation Links */}
@@ -102,7 +107,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={openWhatsApp}
               className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-[4px] bg-[#25D366] text-white hover:bg-[#20ba59] transition-colors shadow-sm cursor-pointer"
             >
-              <MessageSquare className="w-3.5 h-3.5 fill-current" />
+              <FaWhatsapp className="w-4 h-4" />
               <span>WhatsApp Direct</span>
             </motion.button>
             <motion.button
@@ -125,7 +130,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="p-2 text-white bg-[#25D366] rounded-[4px] hover:bg-[#20ba59] transition-colors cursor-pointer"
               aria-label="WhatsApp"
             >
-              <MessageSquare className="w-4 h-4 fill-current" />
+              <FaWhatsapp className="w-5 h-5" />
             </button>
             <button
               id="mobile-menu-toggle-btn"
@@ -161,7 +166,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <div>
                 <div className="flex items-center justify-between pb-5 border-b border-[#e7e2d9]">
-                  <Logo variant="compact" size="sm" />
+                 <img
+             src="/logodiame.jpeg"
+             alt="Logo Agence Immobilière Diame Diallo"
+              className="h-9 w-auto object-contain"
+           />
                   <button
                     id="close-drawer-btn"
                     onClick={() => setMobileMenuOpen(false)}
@@ -206,7 +215,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={openWhatsApp}
                   className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-[#25D366] text-white rounded-[4px] text-xs font-bold shadow-sm cursor-pointer"
                 >
-                  <MessageSquare className="w-4 h-4 fill-current" />
+                  <FaWhatsapp className="w-5 h-5" />
                   <span>Contacter sur WhatsApp</span>
                 </button>
                 <button

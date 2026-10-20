@@ -1,6 +1,9 @@
 import React from 'react';
-import { Globe, Video, FileText, Search, MapPin, Compass, ArrowRight, MessageSquare, AlertCircle } from 'lucide-react';
+import { Globe, Video, FileText, Search, MapPin, Compass, ArrowRight, AlertCircle } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import { buildWhatsAppLink } from '../../utils/whatsapp';
+
+
 
 const STEPS = [
   {
@@ -123,7 +126,7 @@ export const DiasporaSection: React.FC = () => {
             rel="noopener noreferrer"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#1DB954] text-white font-bold text-sm shadow-xl transition-all"
           >
-            <MessageSquare className="w-4 h-4 fill-current" />
+            <FaWhatsapp className="w-5 h-5" />
             Échanger sur mon projet à distance
           </a>
           <a

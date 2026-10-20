@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { Search, Filter, X, Bed, Bath, Maximize2, MapPin, MessageSquare, ArrowRight, SlidersHorizontal } from 'lucide-react';
+import { Search, X, Bed, Bath, Maximize2, MapPin, ArrowRight } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import { Layout } from '../components/layout/Layout';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { DEMO_PROPERTIES, FALLBACK_IMAGE, AGENCY_CONFIG } from '../data';
@@ -76,7 +77,7 @@ const PropertyCard: React.FC<{ property: Property }> = ({ property }) => {
             className="flex items-center justify-center p-2 bg-[#25D366] hover:bg-[#1DB954] text-white rounded-lg transition-colors"
             aria-label="WhatsApp"
           >
-            <MessageSquare className="w-4 h-4 fill-current" />
+           <FaWhatsapp className="w-5 h-5" />
           </a>
         </div>
       </div>

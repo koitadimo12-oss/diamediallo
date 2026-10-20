@@ -1,15 +1,19 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Quote, CheckCircle2, ShieldCheck, Award, MessageSquare, MapPin } from 'lucide-react';
+
+import { Quote, CheckCircle2, ShieldCheck, Award, MapPin } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
+
+
 import { DIRECTRICE_MESSAGE, AGENCY_CONFIG } from '../../data';
 import { buildWhatsAppLink } from '../../utils/whatsapp';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const DIAME_PHOTO = '/diame.jpeg';
-const DIAME_PHOTO_FALLBACK =
-  'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80';
+const DIAME_PHOTO_FALLBACK ='/diame.jpeg';
+  
 
 const KEY_STRENGTHS = [
   'Plus de 20 ans de présence continue et d’expérience foncière à Dakar',
@@ -223,8 +227,8 @@ export const MotDeDirectrice: React.FC = () => {
                   id="mot-direct-chat-btn"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#1DB954] text-white font-bold text-xs uppercase tracking-wider shadow-lg transition-all cursor-pointer"
                 >
-                  <MessageSquare className="w-3.5 h-3.5 fill-current" />
-                  Échanger sur WhatsApp
+                 <FaWhatsapp className="w-4 h-4" />
+                    Échanger sur WhatsApp
                 </a>
               </div>
             </div>

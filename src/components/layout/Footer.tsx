@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Phone, Mail, MapPin, MessageSquare, Facebook, Instagram, Linkedin,
-  Home, TrendingUp, Key, Settings, ChevronRight
+  Phone,
+  Mail,
+  MapPin,
+  Facebook,
+  Instagram,
+  Linkedin,
+  ChevronRight,
 } from 'lucide-react';
+
+import { FaWhatsapp } from 'react-icons/fa';
 import { Logo } from '../ui/Logo';
 import { AGENCY_CONFIG } from '../../data';
 import { buildWhatsAppLink, buildGeneralContactMessage } from '../../utils/whatsapp';
@@ -55,7 +62,7 @@ export const Footer: React.FC = () => {
               id="footer-whatsapp-btn"
               className="flex items-center gap-2 px-5 py-3 bg-[#25D366] hover:bg-[#1DB954] text-white text-sm font-bold rounded-xl transition-colors"
             >
-              <MessageSquare className="w-4 h-4 fill-current" />
+              <FaWhatsapp className="w-5 h-5" />
               WhatsApp Direct
             </a>
             <Link
@@ -166,7 +173,7 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <MessageSquare className="w-4 h-4 text-[#C8A96B] flex-shrink-0" />
+                <FaWhatsapp className="w-4 h-4 text-[#25D366] flex-shrink-0" />
                 <a href={whatsapp} target="_blank" rel="noopener noreferrer" className="text-sm text-[#25D366] hover:text-[#1DB954] font-semibold transition-colors">
                   {AGENCY_CONFIG.whatsappDisplay}
                 </a>

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { MapPin, Search, ArrowRight, MessageSquare, Sparkles } from 'lucide-react';
+
+import { MapPin, Search, ArrowRight } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
+
 import { AGENCY_INFO } from '../data/properties';
 import { PropertyType, TransactionType } from '../types';
 
@@ -123,9 +126,9 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick, onFilterChange }) =
               onClick={handleWhatsAppHero}
               className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-white hover:bg-neutral-50 text-[#00152a] border border-[#d1d5db] font-['Work_Sans'] font-semibold text-sm sm:text-base rounded-[4px] shadow-sm transition-all"
             >
-              <div className="w-5 h-5 rounded-full bg-[#25D366] flex items-center justify-center text-white">
-                <MessageSquare className="w-3 h-3 fill-current" />
-              </div>
+            <div className="w-5 h-5 rounded-full bg-[#25D366] flex items-center justify-center text-white">
+             <FaWhatsapp className="w-3.5 h-3.5" />
+            </div>
               <span>WhatsApp 77 526 41 07</span>
             </motion.button>
           </motion.div>

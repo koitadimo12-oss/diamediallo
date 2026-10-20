@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, MessageSquare, ChevronDown } from 'lucide-react';
-import { Logo } from '../ui/Logo';
+import { Menu, X, Phone, ChevronDown } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
+
 import { AGENCY_CONFIG } from '../../data';
 import { buildWhatsAppLink, buildGeneralContactMessage } from '../../utils/whatsapp';
 
@@ -75,7 +76,16 @@ export const Navbar: React.FC = () => {
           }`}>
             {/* Logo agrandi */}
             <Link to="/" aria-label="Accueil : Agence Immobilière D.DIALLO" className="flex-shrink-0 flex items-center">
-              <Logo size={isScrolled ? 'sm' : 'md'} />
+              <img
+  src="/logodiame.jpeg"
+  alt="Agence Immobilière Diame Diallo SUARL"
+  className={`w-auto object-contain transition-all duration-300 ${
+    isScrolled ? 'h-12 sm:h-14' : 'h-16 sm:h-20'
+  }`}
+  onError={(e) => {
+    console.error('Impossible de charger le logo :', e.currentTarget.src);
+  }}
+/>
             </Link>
 
             {/* Desktop Nav */}
@@ -151,7 +161,7 @@ export const Navbar: React.FC = () => {
                 className="flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-lg bg-[#25D366] text-white hover:bg-[#1DB954] transition-colors shadow-sm"
                 aria-label="Contacter sur WhatsApp"
               >
-                <MessageSquare className="w-3.5 h-3.5 fill-current" />
+                <FaWhatsapp className="w-4 h-4" />
                 WhatsApp
               </a>
               <a
@@ -174,7 +184,7 @@ export const Navbar: React.FC = () => {
                 className="p-2 bg-[#25D366] text-white rounded-lg"
                 aria-label="WhatsApp"
               >
-                <MessageSquare className="w-4 h-4 fill-current" />
+                <FaWhatsapp className="w-5 h-5" />
               </a>
               <button
                 id="mobile-menu-toggle"
@@ -211,7 +221,11 @@ export const Navbar: React.FC = () => {
       >
         {/* Drawer Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-[#F5F6F8]">
-          <Logo variant="compact" />
+          <img
+  src="/logodiame.jpeg"
+  alt="Agence Immobilière Diame Diallo SUARL"
+  className="h-12 w-auto object-contain"
+/>
           <button
             id="mobile-drawer-close"
             onClick={() => setMobileOpen(false)}
@@ -268,7 +282,7 @@ export const Navbar: React.FC = () => {
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 w-full py-3 bg-[#25D366] text-white text-sm font-bold rounded-xl"
           >
-            <MessageSquare className="w-4 h-4 fill-current" />
+            <FaWhatsapp className="w-5 h-5" />
             Contacter sur WhatsApp
           </a>
           <a

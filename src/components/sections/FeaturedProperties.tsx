@@ -6,7 +6,7 @@ import { Bed, Bath, Maximize2, MapPin, ArrowRight, MessageSquare, Tag } from 'lu
 import { DEMO_PROPERTIES, FALLBACK_IMAGE } from '../../data';
 import { Property, PropertyType, TransactionType } from '../../types';
 import { buildWhatsAppLink, buildPropertyInterestMessage } from '../../utils/whatsapp';
-
+import { FaWhatsapp } from 'react-icons/fa';
 gsap.registerPlugin(ScrollTrigger);
 
 const TRANSACTION_LABELS: Record<TransactionType | 'all', string> = {
@@ -146,7 +146,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
               className="flex items-center justify-center p-2.5 bg-[#25D366] hover:bg-[#1DB954] text-white rounded-lg transition-colors"
               aria-label={`Contacter sur WhatsApp pour ${property.title}`}
             >
-              <MessageSquare className="w-4 h-4 fill-current" />
+             <FaWhatsapp className="w-5 h-5" />
             </a>
           </div>
         </div>
