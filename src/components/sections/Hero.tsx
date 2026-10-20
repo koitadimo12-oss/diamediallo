@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
@@ -18,7 +19,7 @@ export const Hero: React.FC = () => {
   const containerRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const badgeRef = useRef<HTMLDivElement>(null);
+  const badgeRef = useRef<HTMLAnchorElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -28,7 +29,6 @@ export const Hero: React.FC = () => {
   const [selectedTransaction, setSelectedTransaction] = useState<TransactionType | 'all'>('all');
   const [selectedZone, setSelectedZone] = useState('all');
 
-  // GSAP entrance animation
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return;
@@ -45,20 +45,23 @@ export const Hero: React.FC = () => {
     return () => ctx.revert();
   }, []);
 
-  // Background image crossfade
   useEffect(() => {
     const interval = setInterval(() => {
       setImgIndex((i) => (i + 1) % HERO_IMAGES.length);
     }, 6000);
+
     return () => clearInterval(interval);
   }, []);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
+
     const params = new URLSearchParams();
+
     if (selectedType !== 'all') params.set('type', selectedType);
     if (selectedTransaction !== 'all') params.set('transaction', selectedTransaction);
     if (selectedZone !== 'all') params.set('zone', selectedZone);
+
     navigate(`/biens?${params.toString()}`);
   };
 
@@ -74,12 +77,16 @@ export const Hero: React.FC = () => {
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
       aria-label="Section héro — Agence Immobilière Diame Diallo"
     >
-      {/* Background Images with crossfade */}
+      {/* Images d'arrière-plan */}
       {HERO_IMAGES.map((src, i) => (
         <img
           key={src}
           src={src}
-          alt={i === 0 ? "Place de la Nation à Colobane, Dakar, carrefour d'implantation de l'Agence Immobilière D.DIALLO" : 'Immobilier de prestige au Sénégal'}
+          alt={
+            i === 0
+              ? "Place de la Nation à Colobane, Dakar, carrefour d'implantation de l'Agence Immobilière D.DIALLO"
+              : 'Immobilier de prestige au Sénégal'
+          }
           aria-hidden={i !== imgIndex}
           loading={i === 0 ? 'eager' : 'lazy'}
           decoding="async"
@@ -88,13 +95,14 @@ export const Hero: React.FC = () => {
           }`}
           style={{ zIndex: 0 }}
           onError={(e) => {
-            (e.currentTarget as HTMLImageElement).src =
+            e.currentTarget.onerror = null;
+            e.currentTarget.src =
               'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=80';
           }}
         />
       ))}
 
-      {/* Dark gradient overlay */}
+      {/* Voile sombre */}
       <div
         ref={overlayRef}
         className="absolute inset-0 z-10"
@@ -104,66 +112,84 @@ export const Hero: React.FC = () => {
         }}
       />
 
-      {/* Gold particle accents */}
+      {/* Effets lumineux dorés */}
       <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-[#C8A96B]/5 blur-3xl z-10 pointer-events-none" />
       <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-[#C8A96B]/5 blur-3xl z-10 pointer-events-none" />
 
-      {/* Content */}
+      {/* Contenu principal */}
       <div className="relative z-20 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center py-24">
 
-        {/* Brand Value Proposition Badge */}
-        <div
+        {/* Badge avec adresse cliquable vers Google Maps */}
+        <a
           ref={badgeRef}
-          className="inline-flex items-center gap-2 px-4 py-2 mb-7 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white text-xs sm:text-sm font-semibold max-w-2xl text-center"
+          href="https://www.google.com/maps/search/?api=1&query=Colobane%2C+angle+rue+41+et+rue+42%2C+Dakar%2C+S%C3%A9n%C3%A9gal"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Localiser l'Agence Immobilière D.DIALLO sur Google Maps"
+          title="Cliquez pour voir l'adresse sur Google Maps"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2 mb-7 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white text-xs sm:text-sm font-semibold max-w-2xl text-center hover:bg-white/25 hover:border-[#C8A96B]/60 transition-all duration-300 cursor-pointer"
         >
           <MapPin className="w-4 h-4 text-[#C8A96B] flex-shrink-0" />
-          <span>Bien plus qu'une agence immobilière, un partenaire de confiance pour vos projets fonciers au Sénégal.</span>
-        </div>
 
-        {/* Main headline */}
+          <span>
+            Angle rue 41 × rue 42, Dakar, Sénégal — L’Agence Immobilière D.DIALLO, votre partenaire de confiance pour tous vos projets immobiliers.
+          </span>
+        </a>
+
+        {/* Titre principal */}
         <h1
           ref={titleRef}
           id="hero-title"
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.12] tracking-tight mb-6 max-w-4xl"
-         
         >
-          Votre projet immobilier au Sénégal{' '}
+          Agence Immobilière{' '}
           <span className="text-[#C8A96B] relative inline-block">
-            mérite un partenaire
+            D.DIALLO
             <span
               className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full"
               style={{ background: 'linear-gradient(90deg, #C8A96B, transparent)' }}
             />
           </span>
-          {' '}de confiance.
+          {' '}— Votre partenaire de confiance.
         </h1>
 
-        {/* Subtitle */}
+        {/* Description */}
         <p
           ref={subtitleRef}
           id="hero-description"
           className="text-sm sm:text-base md:text-lg text-white/85 max-w-3xl leading-relaxed mb-9"
         >
-          Achat de terrain, vente, location et gestion locative : nous vous accompagnons dans vos projets immobiliers avec <strong className="text-[#C8A96B] font-semibold">proximité, transparence et une attention particulière aux questions foncières</strong>.
+          L'Agence Immobilière D.DIALLO vous accompagne dans vos projets au Sénégal :
+          achat de terrains, vente, location et gestion locative, avec{' '}
+          <strong className="text-[#C8A96B] font-semibold">
+            proximité, transparence et une attention particulière aux questions foncières.
+          </strong>
         </p>
 
-        {/* CTA Buttons */}
+        {/* Boutons d'action */}
         <div
           ref={ctaRef}
           className="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-10 w-full max-w-md"
         >
           <a
             href="/biens"
-            onClick={(e) => { e.preventDefault(); navigate('/biens'); }}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/biens');
+            }}
             id="hero-discover-btn"
             className="w-full sm:w-auto flex items-center justify-center gap-2 px-7 py-3.5 bg-[#C8A96B] hover:bg-[#b8995b] text-[#10243A] font-bold text-sm rounded-xl shadow-lg transition-all hover:shadow-xl hover:-translate-y-0.5"
           >
             Découvrir nos biens
             <ArrowRight className="w-4 h-4" />
           </a>
+
           <a
             href="/contact"
-            onClick={(e) => { e.preventDefault(); navigate('/contact'); }}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/contact');
+            }}
             id="hero-counselor-btn"
             className="w-full sm:w-auto flex items-center justify-center gap-2.5 px-6 py-3.5 bg-white/15 hover:bg-white/25 text-white font-semibold text-sm rounded-xl border border-white/30 backdrop-blur-md transition-all"
           >
@@ -172,7 +198,7 @@ export const Hero: React.FC = () => {
           </a>
         </div>
 
-        {/* Quick Search Bar */}
+        {/* Barre de recherche rapide */}
         <div ref={searchRef} id="hero-search" className="w-full max-w-4xl">
           <form
             onSubmit={handleSearch}
@@ -186,10 +212,13 @@ export const Hero: React.FC = () => {
                 >
                   Opération
                 </label>
+
                 <select
                   id="search-transaction"
                   value={selectedTransaction}
-                  onChange={(e) => setSelectedTransaction(e.target.value as TransactionType | 'all')}
+                  onChange={(e) =>
+                    setSelectedTransaction(e.target.value as TransactionType | 'all')
+                  }
                   className="w-full bg-[#F5F6F8] border border-[#e2e8f0] rounded-lg px-3 py-2.5 text-sm text-[#10243A] font-medium focus:outline-none focus:ring-2 focus:ring-[#C8A96B] focus:border-transparent"
                 >
                   <option value="all">Tout (Acheter & Louer)</option>
@@ -205,6 +234,7 @@ export const Hero: React.FC = () => {
                 >
                   Type de bien
                 </label>
+
                 <select
                   id="search-type"
                   value={selectedType}
@@ -226,6 +256,7 @@ export const Hero: React.FC = () => {
                 >
                   Localisation
                 </label>
+
                 <select
                   id="search-zone"
                   value={selectedZone}
@@ -260,7 +291,7 @@ export const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Indicateur de défilement */}
       <button
         id="hero-scroll-btn"
         onClick={scrollDown}
@@ -271,8 +302,9 @@ export const Hero: React.FC = () => {
         <ChevronDown className="w-5 h-5 animate-bounce" />
       </button>
 
-      {/* Scroll target anchor */}
+      {/* Ancre de défilement */}
       <div id="hero-scroll-target" className="absolute bottom-0" />
     </section>
   );
 };
+

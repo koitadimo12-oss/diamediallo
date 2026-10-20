@@ -1,221 +1,355 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-
 import { MapPin, Search, ArrowRight } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
-
 import { AGENCY_INFO } from '../data/properties';
 import { PropertyType, TransactionType } from '../types';
 
 interface HeroProps {
-  onDiscoverClick: () => void;
-  onFilterChange: (filters: { type?: PropertyType | 'all'; transaction?: TransactionType | 'all'; neighborhood?: string }) => void;
+  onDiscoverClick?: () => void;
+  onFilterChange?: (filters: {
+    type?: PropertyType | 'all';
+    transaction?: TransactionType | 'all';
+    neighborhood?: string;
+  }) => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onDiscoverClick, onFilterChange }) => {
-  const [selectedType, setSelectedType] = useState<PropertyType | 'all'>('all');
-  const [selectedTransaction, setSelectedTransaction] = useState<TransactionType | 'all'>('all');
-  const [selectedZone, setSelectedZone] = useState<string>('all');
+export const Hero: React.FC<HeroProps> = ({
+  onDiscoverClick,
+  onFilterChange,
+}) => {
+  const [type, setType] = useState<PropertyType | 'all'>('all');
+  const [transaction, setTransaction] = useState<
+    TransactionType | 'all'
+  >('all');
+  const [neighborhood, setNeighborhood] = useState('');
 
-  const handleWhatsAppHero = () => {
-    const text = encodeURIComponent(
-      "Bonjour Agence Diame Diallo, je souhaite démarrer un projet immobilier à Dakar (Colobane, Almadies, Rufisque...)."
-    );
-    window.open(`https://wa.me/${AGENCY_INFO.whatsapp}?text=${text}`, '_blank');
+  const whatsappNumber = String(AGENCY_INFO.whatsapp).replace(
+    /\D/g,
+    ''
+  );
+
+  const whatsappMessage = encodeURIComponent(
+    "Bonjour Agence Immobilière D.DIALLO ! Je souhaite avoir des informations sur vos services immobiliers au Sénégal."
+  );
+
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+  const rechercherBiens = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    onFilterChange?.({
+      type,
+      transaction,
+      neighborhood: neighborhood.trim(),
+    });
+
+    if (onDiscoverClick) {
+      onDiscoverClick();
+    } else {
+      document.getElementById('biens')?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
   };
 
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onFilterChange({
-      type: selectedType,
-      transaction: selectedTransaction,
-      neighborhood: selectedZone === 'all' ? undefined : selectedZone,
-    });
-    onDiscoverClick();
+  const decouvrirBiens = () => {
+    if (onDiscoverClick) {
+      onDiscoverClick();
+    } else {
+      document.getElementById('biens')?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
   };
 
   return (
-    <section id="accueil" className="relative pt-24 pb-16 md:pt-28 md:pb-20 overflow-hidden">
-      {/* Background Architectural Image with subtle gradient overlay */}
-      <div className="absolute inset-0 z-0">
+    <section
+      id="accueil"
+      aria-labelledby="hero-main-title"
+      className="relative isolate overflow-hidden bg-white"
+    >
+      {/* Image d'arrière-plan */}
+      <div className="absolute inset-0 -z-20">
         <img
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80"
-          alt="Architecture Dakar Immobilier"
-          referrerPolicy="no-referrer"
-          onError={(e) => {
-            (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80';
-          }}
-          className="w-full h-full object-cover object-center opacity-30 md:opacity-20"
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85"
+          alt="Maison contemporaine"
+          className="h-full w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#fef9f0]/95 via-[#fef9f0]/85 to-[#fef9f0]" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
-          
-          {/* Location Badge with Entrance animation */}
+      {/* Voile pour assurer la lisibilité du texte */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-white via-white/95 to-white/75" />
+
+      <div className="mx-auto grid min-h-[650px] max-w-7xl items-center gap-12 px-5 py-20 sm:px-8 lg:grid-cols-2 lg:px-12 lg:py-24">
+        {/* Contenu principal */}
+        <div className="max-w-3xl">
+          {/* Nom de l'agence : première information visible */}
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            id="hero-location-badge"
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95 backdrop-blur-md shadow-sm border border-[#e7e2d9] text-[#1d1c16] text-xs md:text-sm font-semibold mb-6 hover:shadow-md transition-shadow"
+            transition={{ duration: 0.6 }}
+            className="mb-7"
           >
-            <motion.div
-              animate={{ rotate: [0, 10, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
-            >
-              <MapPin className="w-4 h-4 text-[#d97706]" />
-            </motion.div>
-            <span>Colobane, Dakar & Sénégal</span>
+            <div className="mb-3 flex items-center gap-3">
+              <span className="h-1 w-12 rounded-full bg-[#d97706]" />
+
+              <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#9a5b08] sm:text-sm">
+                Votre partenaire immobilier au Sénégal
+              </span>
+            </div>
+
+            <p className="font-['Manrope'] text-2xl font-black leading-tight tracking-tight text-[#00152a] sm:text-3xl md:text-4xl">
+              Agence Immobilière{' '}
+              <span className="text-[#d97706]">D.DIALLO</span>
+            </p>
+
+            <p className="mt-3 max-w-xl text-sm font-medium leading-relaxed text-gray-600 sm:text-base">
+              Bien plus qu'une agence immobilière, un partenaire de
+              confiance pour vos projets fonciers au Sénégal.
+            </p>
           </motion.div>
 
-          {/* Headline with Stagger Animation */}
+          {/* Localisation */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#d97706]/20 bg-white/90 px-4 py-2 shadow-sm"
+          >
+            <MapPin size={17} className="text-[#d97706]" />
+
+            <span className="text-sm font-semibold text-[#00152a]">
+              Colobane, Dakar — Sénégal
+            </span>
+          </motion.div>
+
+          {/* Grand titre */}
           <motion.h1
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
+            transition={{ duration: 0.7, delay: 0.15 }}
             id="hero-main-title"
-            className="font-['Manrope'] font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#00152a] tracking-tight leading-[1.15] mb-5 text-balance"
+            className="mb-6 font-['Manrope'] text-4xl font-black leading-[1.12] tracking-tight text-[#00152a] sm:text-5xl lg:text-6xl"
           >
-            Votre projet immobilier <br className="hidden sm:inline" />
-            <span className="text-[#d97706] relative inline-block">
-              commence ici
+            Votre projet immobilier au Sénégal mérite un{' '}
+            <span className="relative inline-block text-[#d97706]">
+              partenaire de confiance.
               <motion.span
                 initial={{ width: 0 }}
                 animate={{ width: '100%' }}
-                transition={{ duration: 0.8, delay: 0.7, ease: 'easeInOut' }}
-                className="absolute bottom-0 left-0 h-[3px] bg-[#d97706]/40 rounded-full"
+                transition={{
+                  duration: 0.8,
+                  delay: 0.8,
+                  ease: 'easeInOut',
+                }}
+                className="absolute -bottom-1 left-0 h-1 rounded-full bg-[#d97706]/30"
               />
             </span>
           </motion.h1>
 
-          {/* Subtitle */}
+          {/* Description des services */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25, ease: 'easeOut' }}
-            id="hero-description"
-            className="text-base sm:text-lg md:text-xl text-[#43474d] leading-relaxed max-w-2xl mb-8 font-normal"
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="mb-8 max-w-2xl text-base leading-8 text-gray-600 sm:text-lg"
           >
-            Maisons, appartements et terrains à vendre ou à louer au Sénégal. L'élégance de l'immobilier dakarois couplée à un accompagnement juridique et notarié d'excellence.
+            Achat de terrains, vente, location et gestion locative :
+            nous vous accompagnons dans vos projets immobiliers avec
+            <strong className="font-semibold text-[#00152a]">
+              {' '}
+              proximité, transparence et une attention particulière
+              aux questions foncières.
+            </strong>
           </motion.p>
 
-          {/* Action Buttons */}
+          {/* Boutons d'action */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35, ease: 'easeOut' }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full max-w-md sm:max-w-lg mb-10"
+            transition={{ duration: 0.7, delay: 0.35 }}
+            className="mb-10 flex flex-col gap-4 sm:flex-row"
           >
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              id="hero-discover-btn"
-              onClick={onDiscoverClick}
-              className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#00152a] hover:bg-[#102a43] text-white font-['Manrope'] font-bold text-sm sm:text-base rounded-[4px] shadow-md transition-colors"
+            <button
+              type="button"
+              onClick={decouvrirBiens}
+              className="inline-flex min-h-14 items-center justify-center gap-3 rounded-xl bg-[#d97706] px-7 py-4 font-bold text-white shadow-lg shadow-orange-900/15 transition hover:bg-[#b96305] focus:outline-none focus:ring-4 focus:ring-orange-300"
             >
-              <span>Découvrir nos biens</span>
-              <ArrowRight className="w-4 h-4" />
-            </motion.button>
+              Découvrir nos biens
+              <ArrowRight size={20} />
+            </button>
 
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+            <a
               id="hero-whatsapp-btn"
-              onClick={handleWhatsAppHero}
-              className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-white hover:bg-neutral-50 text-[#00152a] border border-[#d1d5db] font-['Work_Sans'] font-semibold text-sm sm:text-base rounded-[4px] shadow-sm transition-all"
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Contacter l'Agence Immobilière D.DIALLO sur WhatsApp"
+              className="inline-flex min-h-14 items-center justify-center gap-3 rounded-xl border border-green-600 bg-white px-7 py-4 font-bold text-green-700 transition hover:bg-green-50 focus:outline-none focus:ring-4 focus:ring-green-200"
             >
-            <div className="w-5 h-5 rounded-full bg-[#25D366] flex items-center justify-center text-white">
-             <FaWhatsapp className="w-3.5 h-3.5" />
-            </div>
-              <span>WhatsApp 77 526 41 07</span>
-            </motion.button>
+              <FaWhatsapp size={22} />
+              Nous contacter
+            </a>
           </motion.div>
 
-          {/* Quick Search Interactive Bar for Real Estate Search */}
+          {/* Services résumés */}
           <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.45, ease: 'easeOut' }}
-            id="hero-search-bar"
-            className="w-full max-w-4xl bg-white/95 backdrop-blur-md p-4 sm:p-5 rounded-xl shadow-lg border border-[#e7e2d9] text-left"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.45 }}
+            className="flex flex-wrap gap-3"
           >
-            <form onSubmit={handleSearchSubmit} className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 items-end">
+            {[
+              'Achat et vente de terrains',
+              'Location immobilière',
+              'Gestion locative',
+              'Conseil foncier',
+            ].map((service) => (
+              <span
+                key={service}
+                className="rounded-full border border-gray-200 bg-white/90 px-4 py-2 text-xs font-semibold text-gray-700 shadow-sm sm:text-sm"
+              >
+                {service}
+              </span>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Bloc de recherche */}
+        <motion.div
+          initial={{ opacity: 0, x: 35 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mx-auto w-full max-w-lg"
+        >
+          <div className="rounded-2xl border border-white/80 bg-white/95 p-6 shadow-2xl shadow-slate-900/10 backdrop-blur-md sm:p-8">
+            <div className="mb-6">
+              <span className="mb-2 block text-xs font-bold uppercase tracking-[0.18em] text-[#d97706]">
+                Votre recherche immobilière
+              </span>
+
+              <h2 className="text-2xl font-extrabold text-[#00152a] sm:text-3xl">
+                Trouvons votre bien
+              </h2>
+
+              <p className="mt-2 text-sm leading-6 text-gray-500">
+                Précisez vos critères pour trouver un bien adapté à
+                votre projet.
+              </p>
+            </div>
+
+            <form onSubmit={rechercherBiens} className="space-y-5">
+              {/* Type de transaction */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#74777e] mb-1.5 font-['Work_Sans']">
-                  Opération
-                </label>
-                <select
-                  id="hero-filter-transaction"
-                  value={selectedTransaction}
-                  onChange={(e) => setSelectedTransaction(e.target.value as any)}
-                  className="w-full bg-[#f8f3ea] border border-[#e7e2d9] rounded-[4px] px-3 py-2 text-sm text-[#00152a] font-medium focus:outline-none focus:border-[#00152a]"
+                <label
+                  htmlFor="hero-transaction"
+                  className="mb-2 block text-sm font-semibold text-gray-700"
                 >
-                  <option value="all">Tout (Vente & Location)</option>
-                  <option value="vente">Achat / Vente</option>
-                  <option value="location">Location</option>
+                  Quel est votre projet ?
+                </label>
+
+                <select
+                  id="hero-transaction"
+                  value={transaction}
+                  onChange={(event) =>
+                    setTransaction(
+                      event.target.value as TransactionType | 'all'
+                    )
+                  }
+                  className="min-h-12 w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-base text-gray-800 outline-none transition focus:border-[#d97706] focus:ring-2 focus:ring-orange-100"
+                >
+                  <option value="all">Tous les projets</option>
+                  <option value="vente">Acheter un bien</option>
+                  <option value="location">Louer un bien</option>
                 </select>
               </div>
 
+              {/* Type de bien */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#74777e] mb-1.5 font-['Work_Sans']">
+                <label
+                  htmlFor="hero-type"
+                  className="mb-2 block text-sm font-semibold text-gray-700"
+                >
                   Type de bien
                 </label>
+
                 <select
-                  id="hero-filter-type"
-                  value={selectedType}
-                  onChange={(e) => setSelectedType(e.target.value as any)}
-                  className="w-full bg-[#f8f3ea] border border-[#e7e2d9] rounded-[4px] px-3 py-2 text-sm text-[#00152a] font-medium focus:outline-none focus:border-[#00152a]"
+                  id="hero-type"
+                  value={type}
+                  onChange={(event) =>
+                    setType(event.target.value as PropertyType | 'all')
+                  }
+                  className="min-h-12 w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-base text-gray-800 outline-none transition focus:border-[#d97706] focus:ring-2 focus:ring-orange-100"
                 >
-                  <option value="all">Tous types</option>
+                  <option value="all">Tous les types</option>
+                  <option value="terrain">Terrain</option>
                   <option value="maison">Maison / Villa</option>
                   <option value="appartement">Appartement</option>
-                  <option value="terrain">Terrain résidentiel</option>
                 </select>
+              </div>
+
+              {/* Localisation */}
+              <div>
+                <label
+                  htmlFor="hero-neighborhood"
+                  className="mb-2 block text-sm font-semibold text-gray-700"
+                >
+                  Ville ou quartier
+                </label>
+
+                <div className="relative">
+                  <MapPin
+                    size={19}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+                  />
+
+                  <input
+                    id="hero-neighborhood"
+                    type="text"
+                    value={neighborhood}
+                    onChange={(event) =>
+                      setNeighborhood(event.target.value)
+                    }
+                    placeholder="Ex. : Dakar, Almadies, Rufisque..."
+                    className="min-h-12 w-full rounded-xl border border-gray-200 bg-white py-3 pl-11 pr-4 text-base text-gray-800 outline-none transition placeholder:text-gray-400 focus:border-[#d97706] focus:ring-2 focus:ring-orange-100"
+                  />
+                </div>
+              </div>
+
+              {/* Bouton de recherche */}
+              <button
+                type="submit"
+                className="flex min-h-14 w-full items-center justify-center gap-3 rounded-xl bg-[#00152a] px-6 py-4 font-bold text-white transition hover:bg-[#0b3152] focus:outline-none focus:ring-4 focus:ring-blue-200"
+              >
+                <Search size={20} />
+                Rechercher un bien
+              </button>
+            </form>
+
+            <div className="mt-6 flex items-start gap-3 border-t border-gray-100 pt-5">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-50 text-[#d97706]">
+                <MapPin size={20} />
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#74777e] mb-1.5 font-['Work_Sans']">
-                  Zone / Quartier
-                </label>
-                <select
-                  id="hero-filter-zone"
-                  value={selectedZone}
-                  onChange={(e) => setSelectedZone(e.target.value)}
-                  className="w-full bg-[#f8f3ea] border border-[#e7e2d9] rounded-[4px] px-3 py-2 text-sm text-[#00152a] font-medium focus:outline-none focus:border-[#00152a]"
-                >
-                  <option value="all">Tout le Sénégal (Dakar, Petite-Côte...)</option>
-                  <option value="Colobane">Colobane</option>
-                  <option value="Grand Dakar">Grand Dakar</option>
-                  <option value="Les Almadies">Les Almadies</option>
-                  <option value="Plateau">Dakar Plateau</option>
-                  <option value="Fann Résidence">Fann Résidence</option>
-                  <option value="Sacré-Cœur">Sacré-Cœur / VDN</option>
-                  <option value="Mermoz / Keur Gorgui">Mermoz / Keur Gorgui</option>
-                  <option value="Ngor Virage">Ngor Virage</option>
-                  <option value="Rufisque">Rufisque</option>
-                  <option value="Diamniadio">Diamniadio Pôle Urbain</option>
-                  <option value="Saly">Saly / Somone (Petite-Côte)</option>
-                  <option value="Toubab Dialaw">Toubab Dialaw</option>
-                </select>
+                <p className="font-bold text-[#00152a]">
+                  Un accompagnement de proximité
+                </p>
+
+                <p className="mt-1 text-sm leading-6 text-gray-500">
+                  Nous vous accompagnons dans vos démarches
+                  immobilières et vos questions foncières au Sénégal.
+                </p>
               </div>
-
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                type="submit"
-                id="hero-search-submit-btn"
-                className="w-full flex items-center justify-center gap-2 bg-[#d97706] hover:bg-[#b45309] text-white font-['Manrope'] font-bold text-sm py-2.5 px-4 rounded-[4px] transition-colors shadow-sm cursor-pointer"
-              >
-                <Search className="w-4 h-4" />
-                <span>Rechercher</span>
-              </motion.button>
-            </form>
-          </motion.div>
-
-        </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 };
+
+export default Hero;
