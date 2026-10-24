@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
@@ -9,13 +10,20 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen flex flex-col bg-[#faf7f1] text-[#10243A]">
+    <div className="min-h-screen flex flex-col bg-transparent text-[#10243A]">
       <Navbar />
-      <main id="main-content" className="flex-1 pt-[var(--nav-h)]" tabIndex={-1}>
+
+      <main
+        id="main-content"
+        className="flex-1 pt-[calc(var(--nav-h)+12px)]"
+        tabIndex={-1}
+      >
         {children}
       </main>
+
       <Footer />
       <FloatingWhatsApp />
     </div>
   );
 };
+
